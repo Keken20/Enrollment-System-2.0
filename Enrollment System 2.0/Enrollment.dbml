@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="enrollment" Class="EnrollmentDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-QEC1KRH;Initial Catalog=enrollment;Integrated Security=True" SettingsObjectName="Enrollment_System_2._0.Properties.Settings" SettingsPropertyName="enrollmentConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=SETH\SQLEXPRESS;Initial Catalog=enrollment;Integrated Security=True" SettingsObjectName="Enrollment_System_2._0.Properties.Settings" SettingsPropertyName="enrollmentConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.admin" Member="admins">
     <Type Name="admin">
       <Column Name="admin_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -7,12 +7,25 @@
       <Column Name="pass" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.subject_tbl" Member="subject_tbls">
+    <Type Name="subject_tbl">
+      <Column Name="subject_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="subject_code" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="subject_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="subject_unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="subject_yearlevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="course_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="subject_tbl_ins_tbl" Member="ins_tbls" ThisKey="subject_id" OtherKey="subject_id" Type="ins_tbl" />
+      <Association Name="subject_tbl_sched_tbl" Member="sched_tbls" ThisKey="subject_id" OtherKey="subject_id" Type="sched_tbl" />
+      <Association Name="course_tbl_subject_tbl" Member="course_tbl" ThisKey="course_id" OtherKey="course_id" Type="course_tbl" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.course_tbl" Member="course_tbls">
     <Type Name="course_tbl">
       <Column Name="course_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="course_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Association Name="course_tbl_enrollment_tbl" Member="enrollment_tbls" ThisKey="course_id" OtherKey="course_id" Type="enrollment_tbl" />
       <Association Name="course_tbl_subject_tbl" Member="subject_tbls" ThisKey="course_id" OtherKey="course_id" Type="subject_tbl" />
+      <Association Name="course_tbl_enrollment_tbl" Member="enrollment_tbls" ThisKey="course_id" OtherKey="course_id" Type="enrollment_tbl" />
       <Association Name="course_tbl_section_tbl" Member="section_tbls" ThisKey="course_id" OtherKey="course_id" Type="section_tbl" />
     </Type>
   </Table>
@@ -40,6 +53,31 @@
       <Association Name="subject_tbl_ins_tbl" Member="subject_tbl" ThisKey="subject_id" OtherKey="subject_id" Type="subject_tbl" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.sched_tbl" Member="sched_tbls">
+    <Type Name="sched_tbl">
+      <Column Name="sched_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="sched_miscode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="sched_sub" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="sched_day" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="sched_time" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="sched_room" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="section_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="subject_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="subject_tbl_sched_tbl" Member="subject_tbl" ThisKey="subject_id" OtherKey="subject_id" Type="subject_tbl" IsForeignKey="true" />
+      <Association Name="section_tbl_sched_tbl" Member="section_tbl" ThisKey="section_id" OtherKey="section_id" Type="section_tbl" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.section_tbl" Member="section_tbls">
+    <Type Name="section_tbl">
+      <Column Name="section_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="section_course" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="section_yearlevel" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="section_name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="course_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="section_tbl_sched_tbl" Member="sched_tbls" ThisKey="section_id" OtherKey="section_id" Type="sched_tbl" />
+      <Association Name="course_tbl_section_tbl" Member="course_tbl" ThisKey="course_id" OtherKey="course_id" Type="course_tbl" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.stud_account" Member="stud_accounts">
     <Type Name="stud_account">
       <Column Name="stud_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -58,52 +96,40 @@
       <Association Name="stud_account_enrollment_tbl" Member="enrollment_tbls" ThisKey="stud_id" OtherKey="stud_id" Type="enrollment_tbl" />
     </Type>
   </Table>
-  <Table Name="dbo.subject_tbl" Member="subject_tbls">
-    <Type Name="subject_tbl">
-      <Column Name="subject_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="subject_code" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="subject_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="subject_unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="subject_yearlevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="course_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="subject_tbl_ins_tbl" Member="ins_tbls" ThisKey="subject_id" OtherKey="subject_id" Type="ins_tbl" />
-      <Association Name="subject_tbl_sched_tbl" Member="sched_tbls" ThisKey="subject_id" OtherKey="subject_id" Type="sched_tbl" />
-      <Association Name="course_tbl_subject_tbl" Member="course_tbl" ThisKey="course_id" OtherKey="course_id" Type="course_tbl" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.section_tbl" Member="section_tbls">
-    <Type Name="section_tbl">
-      <Column Name="section_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="section_course" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="section_yearlevel" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
-      <Column Name="section_name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="course_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="section_tbl_sched_tbl" Member="sched_tbls" ThisKey="section_id" OtherKey="section_id" Type="sched_tbl" />
-      <Association Name="course_tbl_section_tbl" Member="course_tbl" ThisKey="course_id" OtherKey="course_id" Type="course_tbl" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.sched_tbl" Member="sched_tbls">
-    <Type Name="sched_tbl">
-      <Column Name="sched_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="sched_miscode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="sched_sub" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="sched_day" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="sched_time" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="sched_room" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="section_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="subject_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="section_tbl_sched_tbl" Member="section_tbl" ThisKey="section_id" OtherKey="section_id" Type="section_tbl" IsForeignKey="true" />
-      <Association Name="subject_tbl_sched_tbl" Member="subject_tbl" ThisKey="subject_id" OtherKey="subject_id" Type="subject_tbl" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Function Name="dbo.accept_enrollment" Method="accept_enrollment">
     <Parameter Name="id" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.view_subject" Method="view_subject">
+    <ElementType Name="view_subjectResult">
+      <Column Name="Course" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="[Subject Code]" Member="Subject_Code" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="[Subject Name]" Member="Subject_Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Units" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[Subject Level]" Member="Subject_Level" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
   </Function>
   <Function Name="dbo.add_instructor" Method="add_instructor">
     <Parameter Name="fname" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="lname" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="subjectid" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.add_schedule" Method="add_schedule">
+    <Parameter Name="miscode" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="subject" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="day" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="time" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="room" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="sectionid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="subjectid" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.add_section" Method="add_section">
+    <Parameter Name="course" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="yearlevel" Type="System.String" DbType="VarChar(5)" />
+    <Parameter Name="name" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="courseid" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.add_subject" Method="add_subject">
@@ -213,6 +239,16 @@
       <Column Name="stud_mname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.get_section_info" Method="get_section_info">
+    <Parameter Name="sectionid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="get_section_infoResult">
+      <Column Name="section_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="section_course" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="section_yearlevel" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="section_name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="course_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
   <Function Name="dbo.get_stud_info" Method="get_stud_info">
     <Parameter Name="username" Type="System.String" DbType="VarChar(50)" />
     <ElementType Name="get_stud_infoResult">
@@ -229,6 +265,17 @@
       <Column Name="stud_email" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
       <Column Name="stud_tel" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="stud_isActive" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.get_sub_info" Method="get_sub_info">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="get_sub_infoResult">
+      <Column Name="subject_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="subject_code" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="subject_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="subject_unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="subject_yearlevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="course_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.get_subject" Method="get_subject">
@@ -266,33 +313,6 @@
       <Column Name="[Subject Code]" Member="Subject_Code" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.view_subject" Method="view_subject">
-    <ElementType Name="view_subjectResult">
-      <Column Name="Course" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="[Subject Code]" Member="Subject_Code" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="[Subject Name]" Member="Subject_Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Units" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="[Subject Level]" Member="Subject_Level" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.get_sub_info" Method="get_sub_info">
-    <Parameter Name="id" Type="System.Int32" DbType="Int" />
-    <ElementType Name="get_sub_infoResult">
-      <Column Name="subject_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="subject_code" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="subject_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="subject_unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="subject_yearlevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="course_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.add_section" Method="add_section">
-    <Parameter Name="course" Type="System.String" DbType="VarChar(10)" />
-    <Parameter Name="yearlevel" Type="System.String" DbType="VarChar(5)" />
-    <Parameter Name="name" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="courseid" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="dbo.view_schedule" Method="view_schedule">
     <Parameter Name="sectionid" Type="System.Int32" DbType="Int" />
     <ElementType Name="view_scheduleResult">
@@ -311,26 +331,6 @@
       <Column Name="Course" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="[Year Level]" Member="Year_Level" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
       <Column Name="[Section Name]" Member="Section_Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.add_schedule" Method="add_schedule">
-    <Parameter Name="miscode" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="subject" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="day" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="time" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="room" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="sectionid" Type="System.Int32" DbType="Int" />
-    <Parameter Name="subjectid" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.get_section_info" Method="get_section_info">
-    <Parameter Name="sectionid" Type="System.Int32" DbType="Int" />
-    <ElementType Name="get_section_infoResult">
-      <Column Name="section_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="section_course" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="section_yearlevel" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
-      <Column Name="section_name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="course_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>
