@@ -32,5 +32,15 @@ namespace Enrollment_System_2._0.Properties {
                 return ((string)(this["enrollmentConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SETH\\SQLEXPRESS;Initial Catalog=enrollment;Integrated Security=True")]
+        public string enrollmentConnectionString1 {
+            get {
+                return ((string)(this["enrollmentConnectionString1"]));
+            }
+        }
     }
 }
