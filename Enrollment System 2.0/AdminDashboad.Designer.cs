@@ -205,14 +205,14 @@ namespace Enrollment_System_2._0
             this.mainpanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainpanel.Location = new System.Drawing.Point(248, 0);
             this.mainpanel.Name = "mainpanel";
-            this.mainpanel.Size = new System.Drawing.Size(756, 741);
+            this.mainpanel.Size = new System.Drawing.Size(1035, 741);
             this.mainpanel.TabIndex = 3;
             // 
             // AdminDashboad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1004, 741);
+            this.ClientSize = new System.Drawing.Size(1283, 741);
             this.Controls.Add(this.mainpanel);
             this.Controls.Add(this.panel1);
             this.Name = "AdminDashboad";

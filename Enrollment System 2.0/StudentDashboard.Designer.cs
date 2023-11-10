@@ -133,14 +133,14 @@ namespace Enrollment_System_2._0
             this.studentpanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.studentpanel.Location = new System.Drawing.Point(274, 0);
             this.studentpanel.Name = "studentpanel";
-            this.studentpanel.Size = new System.Drawing.Size(730, 741);
+            this.studentpanel.Size = new System.Drawing.Size(810, 741);
             this.studentpanel.TabIndex = 4;
             // 
             // StudentDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1004, 741);
+            this.ClientSize = new System.Drawing.Size(1084, 741);
             this.Controls.Add(this.studentpanel);
             this.Controls.Add(this.panel1);
             this.Name = "StudentDashboard";
