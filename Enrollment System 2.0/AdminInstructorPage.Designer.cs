@@ -38,6 +38,7 @@ namespace Enrollment_System_2._0
             this.instructorlname = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.update = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -136,6 +137,24 @@ namespace Enrollment_System_2._0
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(600, 243);
             this.dataGridView1.TabIndex = 39;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // update
+            // 
+            this.update.BackColor = System.Drawing.Color.SteelBlue;
+            this.update.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.update.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.update.FlatAppearance.BorderSize = 0;
+            this.update.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.update.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.update.Location = new System.Drawing.Point(190, 312);
+            this.update.Name = "update";
+            this.update.Size = new System.Drawing.Size(73, 37);
+            this.update.TabIndex = 36;
+            this.update.Text = "Update";
+            this.update.UseVisualStyleBackColor = false;
+            this.update.Click += new System.EventHandler(this.update_Click);
             // 
             // AdminInstructorPage
             // 
@@ -145,6 +164,7 @@ namespace Enrollment_System_2._0
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.update);
             this.Controls.Add(this.add);
             this.Controls.Add(this.instructorfname);
             this.Controls.Add(this.label3);
@@ -171,5 +191,6 @@ namespace Enrollment_System_2._0
         private System.Windows.Forms.TextBox instructorlname;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button update;
     }
 }

@@ -13,6 +13,8 @@ namespace Enrollment_System_2._0
     public partial class AdminSubjectPage : Form
     {
         EnrollmentDataContext db = new EnrollmentDataContext();
+        int id;
+
         public AdminSubjectPage()
         {
             InitializeComponent();
@@ -25,28 +27,29 @@ namespace Enrollment_System_2._0
             comboBox1.DisplayMember = "course_name";
             comboBox1.ValueMember = "course_id";
             dataGridView1.DataSource = db.view_subject();
+
+            ClearData();
         }
 
         private void add_Click(object sender, EventArgs e)
         {
-            int courseid = (int)comboBox1.SelectedValue;
             string subjectcode = subcode.Text.ToString();
             string subjectname = subname.Text.ToString();
-            int sublevel = Convert.ToInt32(subyear.SelectedItem.ToString());
-            int subunit = Convert.ToInt32(subunits.Text);
+            string subunit = subunits.Text.ToString();
+            int sublevel = Convert.ToInt32(subyear.SelectedValue);
+            int courseid = Convert.ToInt32(comboBox1.SelectedValue);
 
 
-            if (subcode.Text == "" || subname.Text == "" || subunits.Text == "")
+            if (subcode.Text == "" || subname.Text == "" || subunits.Text == "" || sublevel == 0 || courseid == 0)
             {
                 MessageBox.Show("Input needed informations");
-                ;
             }
             else
             {
                 MessageBox.Show("Subject added successfully", "Message");
-                db.add_subject(subjectcode, subjectname, subunit, sublevel, courseid);
-                ClearData();
+                db.add_subject(subjectcode, subjectname, Convert.ToInt32(subunit), sublevel, courseid);
                 dataGridView1.DataSource = db.view_subject();
+                ClearData();
             }
         }
         private void ClearData()
@@ -54,7 +57,33 @@ namespace Enrollment_System_2._0
             subcode.Text = "";
             subname.Text = "";
             subunits.Text = "";
-            subyear.Text = "";
+            subyear.SelectedValue = "";
+            comboBox1.SelectedValue = "";
+        }
+
+        private void update_Click(object sender, EventArgs e)
+        {
+            if (subcode.Text == "" || subname.Text == "" || subunits.Text == "")
+            {
+                MessageBox.Show("Input needed informations");
+            }
+            else
+            {
+                db.update_subject(id, subcode.Text, subname.Text, Convert.ToInt32(subunits.Text), Convert.ToInt32(subyear.SelectedItem), Convert.ToInt32(comboBox1.SelectedValue));
+                dataGridView1.DataSource = db.view_subject();
+                MessageBox.Show("Successfully Updated!", "Update", MessageBoxButtons.OK);
+                ClearData();
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+            subcode.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            subname.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            subunits.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            subyear.SelectedValue = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            comboBox1.SelectedValue = dataGridView1.CurrentRow.Cells[5].Value.ToString();
         }
     }
 }

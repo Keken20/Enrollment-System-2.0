@@ -42,6 +42,7 @@ namespace Enrollment_System_2._0
             this.subcode = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.update = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,6 +79,8 @@ namespace Enrollment_System_2._0
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(682, 409);
             this.dataGridView1.TabIndex = 54;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // label6
             // 
@@ -126,7 +129,7 @@ namespace Enrollment_System_2._0
             this.add.FlatAppearance.BorderSize = 0;
             this.add.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.add.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.add.Location = new System.Drawing.Point(148, 432);
+            this.add.Location = new System.Drawing.Point(82, 439);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(73, 37);
             this.add.TabIndex = 49;
@@ -185,6 +188,22 @@ namespace Enrollment_System_2._0
             this.label1.TabIndex = 44;
             this.label1.Text = "Add Subject";
             // 
+            // update
+            // 
+            this.update.BackColor = System.Drawing.Color.SteelBlue;
+            this.update.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.update.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.update.FlatAppearance.BorderSize = 0;
+            this.update.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.update.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.update.Location = new System.Drawing.Point(216, 439);
+            this.update.Name = "update";
+            this.update.Size = new System.Drawing.Size(73, 37);
+            this.update.TabIndex = 49;
+            this.update.Text = "Update";
+            this.update.UseVisualStyleBackColor = false;
+            this.update.Click += new System.EventHandler(this.update_Click);
+            // 
             // AdminSubjectPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -197,6 +216,7 @@ namespace Enrollment_System_2._0
             this.Controls.Add(this.subunits);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.update);
             this.Controls.Add(this.add);
             this.Controls.Add(this.subname);
             this.Controls.Add(this.label3);
@@ -227,5 +247,6 @@ namespace Enrollment_System_2._0
         private System.Windows.Forms.TextBox subcode;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button update;
     }
 }
