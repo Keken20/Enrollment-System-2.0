@@ -32,7 +32,7 @@ namespace Enrollment_System_2._0
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbsearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,8 +49,8 @@ namespace Enrollment_System_2._0
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(56, 136);
             this.dataGridView1.Name = "dataGridView1";
@@ -66,23 +66,25 @@ namespace Enrollment_System_2._0
             this.label2.TabIndex = 12;
             this.label2.Text = "Search:";
             // 
-            // textBox1
+            // tbsearch
             // 
-            this.textBox1.Location = new System.Drawing.Point(831, 110);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(148, 20);
-            this.textBox1.TabIndex = 13;
+            this.tbsearch.Location = new System.Drawing.Point(831, 110);
+            this.tbsearch.Name = "tbsearch";
+            this.tbsearch.Size = new System.Drawing.Size(148, 20);
+            this.tbsearch.TabIndex = 13;
+            this.tbsearch.TextChanged += new System.EventHandler(this.tbsearch_TextChanged);
             // 
             // AdminStudentPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 741);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbsearch);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.Name = "AdminStudentPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminStudentPage";
             this.Load += new System.EventHandler(this.AdminStudentPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -95,7 +97,7 @@ namespace Enrollment_System_2._0
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbsearch;
         private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

@@ -20,23 +20,26 @@ namespace Enrollment_System_2._0
 
         private void AdminEnrolleesPage_Load(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = db.enrollees_view();
+            dtgrv.DataSource = db.enrollees_view();
 
             DataGridViewButtonColumn action = new DataGridViewButtonColumn();
             action.HeaderText = "Action";
             action.Name = "acceptbtn";
             action.Text = "Enroll";
             action.UseColumnTextForButtonValue = true;
-            dataGridView1.Columns.Add(action);
+            dtgrv.Columns.Add(action);
         }
-
+        public  void DisplayData()
+        {
+            dtgrv.DataSource = db.enrollees_view();
+        }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.Columns[e.ColumnIndex].Name == "acceptbtn")
+            if (dtgrv.Columns[e.ColumnIndex].Name == "acceptbtn")
             {
-                EnrollStudent d = new EnrollStudent();
-                int id = int.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString());
-                d.enrollmentid = id;
+                EnrollStudent d = new EnrollStudent(this);
+                int id = int.Parse(dtgrv.CurrentRow.Cells[1].Value.ToString());
+                d.studentid = id;
                 d.ShowDialog();
                 //if (MessageBox.Show("Confirm?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 //{

@@ -40,7 +40,7 @@ namespace Enrollment_System_2._0
             int courseid = Convert.ToInt32(comboBox1.SelectedValue);
 
 
-            if (subcode.Text == "" || subname.Text == "" || subunits.Text == "" || sublevel == 0 || courseid == 0)
+            if (subcode.Text == "" || subname.Text == "" || subunits.Text == "" || subunits.Text == "" || comboBox1.SelectedValue == null)
             {
                 MessageBox.Show("Input needed informations");
             }
@@ -63,7 +63,7 @@ namespace Enrollment_System_2._0
 
         private void update_Click(object sender, EventArgs e)
         {
-            if (subcode.Text == "" || subname.Text == "" || subunits.Text == "")
+            if (subcode.Text == "" || subname.Text == "" || subunits.Text == "" || subunits.Text == "" || comboBox1.SelectedValue == null )
             {
                 MessageBox.Show("Input needed informations");
             }

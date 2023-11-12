@@ -37,8 +37,8 @@ namespace Enrollment_System_2._0
             this.total_enrolled = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
             this.total_enrollees = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -124,6 +124,16 @@ namespace Enrollment_System_2._0
             this.panel3.Size = new System.Drawing.Size(200, 198);
             this.panel3.TabIndex = 9;
             // 
+            // total_enrollees
+            // 
+            this.total_enrollees.AutoSize = true;
+            this.total_enrollees.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.total_enrollees.ForeColor = System.Drawing.Color.SteelBlue;
+            this.total_enrollees.Location = new System.Drawing.Point(84, 89);
+            this.total_enrollees.Name = "total_enrollees";
+            this.total_enrollees.Size = new System.Drawing.Size(0, 20);
+            this.total_enrollees.TabIndex = 11;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -135,16 +145,6 @@ namespace Enrollment_System_2._0
             this.label4.TabIndex = 8;
             this.label4.Text = "Enrollees";
             // 
-            // total_enrollees
-            // 
-            this.total_enrollees.AutoSize = true;
-            this.total_enrollees.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.total_enrollees.ForeColor = System.Drawing.Color.SteelBlue;
-            this.total_enrollees.Location = new System.Drawing.Point(84, 89);
-            this.total_enrollees.Name = "total_enrollees";
-            this.total_enrollees.Size = new System.Drawing.Size(0, 20);
-            this.total_enrollees.TabIndex = 11;
-            // 
             // AdminHomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -155,6 +155,7 @@ namespace Enrollment_System_2._0
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Name = "AdminHomePage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminHomePage";
             this.Load += new System.EventHandler(this.AdminHomePage_Load);
             this.panel1.ResumeLayout(false);

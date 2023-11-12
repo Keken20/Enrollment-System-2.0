@@ -39,7 +39,7 @@ namespace Enrollment_System_2._0
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label1.Location = new System.Drawing.Point(50, 50);
+            this.label1.Location = new System.Drawing.Point(10, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 31);
             this.label1.TabIndex = 5;
@@ -47,10 +47,12 @@ namespace Enrollment_System_2._0
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(56, 134);
+            this.dataGridView1.Location = new System.Drawing.Point(16, 81);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(682, 290);
+            this.dataGridView1.Size = new System.Drawing.Size(722, 290);
             this.dataGridView1.TabIndex = 6;
             // 
             // StudentCORPage
@@ -61,6 +63,7 @@ namespace Enrollment_System_2._0
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.Name = "StudentCORPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StudentCORPage";
             this.Load += new System.EventHandler(this.StudentCORPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

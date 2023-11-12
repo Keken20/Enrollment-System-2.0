@@ -287,6 +287,7 @@ namespace Enrollment_System_2._0
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "StudentEnrollmentPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StudentEnrollmentPage";
             this.Load += new System.EventHandler(this.StudentEnrollmentPage_Load);
             this.ResumeLayout(false);

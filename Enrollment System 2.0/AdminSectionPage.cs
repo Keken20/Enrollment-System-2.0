@@ -25,13 +25,19 @@ namespace Enrollment_System_2._0
             comboBox1.DataSource = db.get_course();
             comboBox1.DisplayMember = "course_name";
             comboBox1.ValueMember = "course_name";
-            
+
             DataGridViewButtonColumn action = new DataGridViewButtonColumn();
             action.HeaderText = "Action";
             action.Name = "view";
             action.Text = "View Subject";
             action.UseColumnTextForButtonValue = true;
             dataGridView1.Columns.Add(action);
+            DataGridViewButtonColumn remove = new DataGridViewButtonColumn();
+            remove.HeaderText = "Action";
+            remove.Name = "remove";
+            remove.Text = "Remove";
+            remove.UseColumnTextForButtonValue = true;
+            dataGridView1.Columns.Add(remove);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -52,10 +58,20 @@ namespace Enrollment_System_2._0
         {
             if (dataGridView1.Columns[e.ColumnIndex].Name == "view")
             {
-                int secid = int.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString());
+                int secid = int.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString());
                 AdminSchedulePage g = new AdminSchedulePage();
                 g.sectionid = secid;    
                 g.ShowDialog();             
+            }
+            else if (dataGridView1.Columns[e.ColumnIndex].Name == "remove")
+            {
+                int secid = int.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString());
+                if(MessageBox.Show("Confirm?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    db.delete_section(secid);
+                    dataGridView1.DataSource = db.view_section();
+                    MessageBox.Show("Section deleted sucessfully", "Message");
+                }
             }
         }
     }

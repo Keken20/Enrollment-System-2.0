@@ -34,7 +34,6 @@ namespace Enrollment_System_2._0
             action.Text = "Remove";
             action.UseColumnTextForButtonValue = true;
             dataGridView1.Columns.Add(action);
-
             ClearData();
         }
 
@@ -43,7 +42,7 @@ namespace Enrollment_System_2._0
             string insfname = instructorfname.Text;
             string inslname = instructorlname.Text;
             int subid = Convert.ToInt32(comboBox1.SelectedValue);
-            if (instructorfname.Text == "" || instructorlname.Text == "")
+            if (instructorfname.Text == "" || instructorlname.Text == "" || comboBox1.SelectedValue == null)
             {
                 MessageBox.Show("Fill all informations");
             }
@@ -64,7 +63,7 @@ namespace Enrollment_System_2._0
 
         private void update_Click(object sender, EventArgs e)
         {
-            if (instructorfname.Text == "" || instructorlname.Text == "")
+            if (instructorfname.Text == "" || instructorlname.Text == "" || comboBox1.SelectedValue == null)
             {
                 MessageBox.Show("Fill all informations");
             }
@@ -87,11 +86,14 @@ namespace Enrollment_System_2._0
                     instructorfname.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
                     instructorlname.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
                     comboBox1.SelectedValue = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-
                     db.delete_instructor(id);
                     dataGridView1.DataSource = db.view_instructor();
                 }
-            }
+                else
+                {
+                    
+                }
+            }       
         }
     }
 }

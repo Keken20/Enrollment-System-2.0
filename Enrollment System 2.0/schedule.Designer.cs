@@ -50,6 +50,7 @@ namespace Enrollment_System_2._0
             this.ClientSize = new System.Drawing.Size(704, 297);
             this.Controls.Add(this.label2);
             this.Name = "schedule";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "schedule";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -119,6 +119,7 @@ namespace Enrollment_System_2._0
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Name = "StudentHomePage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StudentHomePage";
             this.Load += new System.EventHandler(this.StudentHomePage_Load);
             this.panel1.ResumeLayout(false);

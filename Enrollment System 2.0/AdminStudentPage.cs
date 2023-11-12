@@ -33,6 +33,10 @@ namespace Enrollment_System_2._0
             dataGridView1.DataSource = db.enrolled_view();
         }
 
+        private void tbsearch_TextChanged(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = db.search_enrolled_view(tbsearch.Text);
+        }
     }
 
 }

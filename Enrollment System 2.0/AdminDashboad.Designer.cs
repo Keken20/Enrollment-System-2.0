@@ -29,6 +29,7 @@ namespace Enrollment_System_2._0
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminDashboad));
             this.panel1 = new System.Windows.Forms.Panel();
             this.user = new System.Windows.Forms.Label();
             this.admin = new System.Windows.Forms.Label();
@@ -190,6 +191,7 @@ namespace Enrollment_System_2._0
             this.button1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.SteelBlue;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(0, 75);
             this.button1.Name = "button1";
@@ -216,6 +218,7 @@ namespace Enrollment_System_2._0
             this.Controls.Add(this.mainpanel);
             this.Controls.Add(this.panel1);
             this.Name = "AdminDashboad";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminDashboad";
             this.Load += new System.EventHandler(this.AdminDashboad_Load);
             this.panel1.ResumeLayout(false);
@@ -237,6 +240,6 @@ namespace Enrollment_System_2._0
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Panel mainpanel;
+        public System.Windows.Forms.Panel mainpanel;
     }
 }

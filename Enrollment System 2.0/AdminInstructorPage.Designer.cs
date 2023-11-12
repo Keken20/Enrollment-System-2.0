@@ -131,7 +131,7 @@ namespace Enrollment_System_2._0
             // dataGridView1
             // 
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(385, 106);
             this.dataGridView1.Name = "dataGridView1";
@@ -172,6 +172,7 @@ namespace Enrollment_System_2._0
             this.Controls.Add(this.instructorlname);
             this.Controls.Add(this.label1);
             this.Name = "AdminInstructorPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminInstructorPage";
             this.Load += new System.EventHandler(this.AdminInstructorPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

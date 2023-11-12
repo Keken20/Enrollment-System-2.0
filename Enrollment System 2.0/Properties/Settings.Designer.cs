@@ -42,5 +42,16 @@ namespace Enrollment_System_2._0.Properties {
                 return ((string)(this["enrollmentConnectionString1"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-H27FGSQ\\SQLEXPRESS;Initial Catalog=enrollment;Integrated Secu" +
+            "rity=True")]
+        public string enrollmentConnectionString2 {
+            get {
+                return ((string)(this["enrollmentConnectionString2"]));
+            }
+        }
     }
 }

@@ -270,6 +270,7 @@ namespace Enrollment_System_2._0
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtlname);
             this.Name = "StudentPIPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StudentPIPage";
             this.Load += new System.EventHandler(this.StudentPIPage_Load);
             this.ResumeLayout(false);

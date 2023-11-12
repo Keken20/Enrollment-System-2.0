@@ -35,6 +35,11 @@ namespace Enrollment_System_2._0
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtfullname = new System.Windows.Forms.Label();
+            this.Info = new System.Windows.Forms.Label();
+            this.tbcourse = new System.Windows.Forms.TextBox();
+            this.tbyrlv = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.enroll = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -51,7 +56,7 @@ namespace Enrollment_System_2._0
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(365, 138);
+            this.comboBox1.Location = new System.Drawing.Point(351, 272);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 8;
@@ -61,7 +66,7 @@ namespace Enrollment_System_2._0
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label3.Location = new System.Drawing.Point(362, 109);
+            this.label3.Location = new System.Drawing.Point(348, 243);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(96, 17);
             this.label3.TabIndex = 38;
@@ -72,7 +77,7 @@ namespace Enrollment_System_2._0
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label2.Location = new System.Drawing.Point(29, 109);
+            this.label2.Location = new System.Drawing.Point(32, 243);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 17);
             this.label2.TabIndex = 39;
@@ -83,7 +88,7 @@ namespace Enrollment_System_2._0
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label4.Location = new System.Drawing.Point(184, 109);
+            this.label4.Location = new System.Drawing.Point(187, 243);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(76, 17);
             this.label4.TabIndex = 40;
@@ -99,11 +104,68 @@ namespace Enrollment_System_2._0
             this.txtfullname.Size = new System.Drawing.Size(0, 31);
             this.txtfullname.TabIndex = 41;
             // 
+            // Info
+            // 
+            this.Info.AutoSize = true;
+            this.Info.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Info.ForeColor = System.Drawing.Color.SteelBlue;
+            this.Info.Location = new System.Drawing.Point(29, 107);
+            this.Info.Name = "Info";
+            this.Info.Size = new System.Drawing.Size(76, 25);
+            this.Info.TabIndex = 42;
+            this.Info.Text = "Course";
+            // 
+            // tbcourse
+            // 
+            this.tbcourse.Location = new System.Drawing.Point(35, 272);
+            this.tbcourse.Name = "tbcourse";
+            this.tbcourse.Size = new System.Drawing.Size(134, 20);
+            this.tbcourse.TabIndex = 43;
+            // 
+            // tbyrlv
+            // 
+            this.tbyrlv.Location = new System.Drawing.Point(190, 272);
+            this.tbyrlv.Name = "tbyrlv";
+            this.tbyrlv.Size = new System.Drawing.Size(134, 20);
+            this.tbyrlv.TabIndex = 44;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label5.Location = new System.Drawing.Point(30, 181);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(101, 25);
+            this.label5.TabIndex = 45;
+            this.label5.Text = "Enroll  To:";
+            // 
+            // enroll
+            // 
+            this.enroll.BackColor = System.Drawing.Color.SteelBlue;
+            this.enroll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.enroll.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.enroll.FlatAppearance.BorderSize = 0;
+            this.enroll.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.enroll.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.enroll.Location = new System.Drawing.Point(35, 322);
+            this.enroll.Name = "enroll";
+            this.enroll.Size = new System.Drawing.Size(73, 37);
+            this.enroll.TabIndex = 47;
+            this.enroll.Text = "Enroll";
+            this.enroll.UseVisualStyleBackColor = false;
+            this.enroll.Click += new System.EventHandler(this.enroll_Click);
+            // 
             // EnrollStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.enroll);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.tbyrlv);
+            this.Controls.Add(this.tbcourse);
+            this.Controls.Add(this.Info);
             this.Controls.Add(this.txtfullname);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
@@ -111,6 +173,7 @@ namespace Enrollment_System_2._0
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
             this.Name = "EnrollStudent";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EnrollStudent";
             this.Load += new System.EventHandler(this.EnrollStudent_Load);
             this.ResumeLayout(false);
@@ -126,5 +189,10 @@ namespace Enrollment_System_2._0
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label txtfullname;
+        private System.Windows.Forms.Label Info;
+        private System.Windows.Forms.TextBox tbcourse;
+        private System.Windows.Forms.TextBox tbyrlv;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button enroll;
     }
 }

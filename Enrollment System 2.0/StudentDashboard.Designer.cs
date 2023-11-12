@@ -144,6 +144,7 @@ namespace Enrollment_System_2._0
             this.Controls.Add(this.studentpanel);
             this.Controls.Add(this.panel1);
             this.Name = "StudentDashboard";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StudentDashboard";
             this.Load += new System.EventHandler(this.StudentDashboard_Load);
             this.panel1.ResumeLayout(false);

@@ -14,6 +14,7 @@ namespace Enrollment_System_2._0
     {
         EnrollmentDataContext db = new EnrollmentDataContext();
         public string username { get; set; }
+        public int id;
         public StudentCORPage()
         {
             InitializeComponent();
@@ -28,8 +29,13 @@ namespace Enrollment_System_2._0
             var result = db.get_id(username).ToList();
             foreach (var item in result)
             {
-                int id = item.stud_id;
-                dataGridView1.DataSource = db.view_cor(id);
+                id = item.stud_id;
+                
+            }
+            var res = db.get_enrolled_info(id);
+            foreach(var item in res)
+            {
+                dataGridView1.DataSource = db.view_student_cor(item.section_id);
             }
         }
     }

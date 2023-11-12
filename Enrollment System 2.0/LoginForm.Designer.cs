@@ -141,6 +141,7 @@ namespace Enrollment_System_2._0
             this.password.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.password.Location = new System.Drawing.Point(53, 333);
             this.password.Name = "password";
+            this.password.PasswordChar = '*';
             this.password.Size = new System.Drawing.Size(298, 23);
             this.password.TabIndex = 4;
             // 
@@ -251,6 +252,7 @@ namespace Enrollment_System_2._0
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Name = "LoginForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
