@@ -65,7 +65,11 @@ namespace Enrollment_System_2._0
         {
             if (instructorfname.Text == "" || instructorlname.Text == "" || comboBox1.SelectedValue == null)
             {
-                MessageBox.Show("Fill all informations");
+                MessageBox.Show("Fill all informations", "Error");
+            }
+            else if (instructorfname.Text != dataGridView1.CurrentRow.Cells[2].Value.ToString() || instructorlname.Text != dataGridView1.CurrentRow.Cells[3].Value.ToString())
+            {
+                MessageBox.Show("Cannot Update, Data not in the Database", "Error");
             }
             else
             {
@@ -76,24 +80,22 @@ namespace Enrollment_System_2._0
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            id = int.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString());
+            instructorfname.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            instructorlname.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            comboBox1.SelectedItem = dataGridView1.CurrentRow.Cells[4].Value.ToString();
             if (dataGridView1.Columns[e.ColumnIndex].Name == "deletebtn")
             {
                 if (MessageBox.Show("Confirm?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    id = int.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString());
-                    instructorfname.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-                    instructorlname.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-                    comboBox1.SelectedValue = dataGridView1.CurrentRow.Cells[4].Value.ToString();
                     db.delete_instructor(id);
                     dataGridView1.DataSource = db.view_instructor();
+                    MessageBox.Show("Instructor deleted sucessfully", "Message");
+                    ClearData();
                 }
-                else
-                {
-                    
-                }
-            }       
+            }
         }
     }
 }
