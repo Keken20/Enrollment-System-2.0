@@ -28,6 +28,12 @@ namespace Enrollment_System_2._0
             comboBox1.ValueMember = "course_id";
             dataGridView1.DataSource = db.view_subject();
 
+            DataGridViewButtonColumn remove = new DataGridViewButtonColumn();
+            remove.HeaderText = "Action";
+            remove.Name = "remove";
+            remove.Text = "Remove";
+            remove.UseColumnTextForButtonValue = true;
+            dataGridView1.Columns.Add(remove);
             ClearData();
         }
 
@@ -36,13 +42,13 @@ namespace Enrollment_System_2._0
             string subjectcode = subcode.Text.ToString();
             string subjectname = subname.Text.ToString();
             string subunit = subunits.Text.ToString();
-            int sublevel = Convert.ToInt32(subyear.SelectedValue);
+            int sublevel = Convert.ToInt32(subyear.SelectedItem);
             int courseid = Convert.ToInt32(comboBox1.SelectedValue);
 
 
             if (subcode.Text == "" || subname.Text == "" || subunits.Text == "" || subunits.Text == "" || comboBox1.SelectedValue == null)
             {
-                MessageBox.Show("Input needed informations");
+                MessageBox.Show("Fill all informations", "Error");
             }
             else
             {
@@ -65,7 +71,11 @@ namespace Enrollment_System_2._0
         {
             if (subcode.Text == "" || subname.Text == "" || subunits.Text == "" || subunits.Text == "" || comboBox1.SelectedValue == null )
             {
-                MessageBox.Show("Input needed informations");
+                MessageBox.Show("Fill all informations", "Error");
+            }
+            else if (subcode.Text != dataGridView1.CurrentRow.Cells[2].Value.ToString() || subname.Text != dataGridView1.CurrentRow.Cells[3].Value.ToString() || subunits.Text != dataGridView1.CurrentRow.Cells[4].Value.ToString())
+            {
+                MessageBox.Show("Cannot Update, Data not in the Database", "Error");
             }
             else
             {
@@ -76,14 +86,24 @@ namespace Enrollment_System_2._0
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-            subcode.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            subname.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            subunits.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            subyear.SelectedValue = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-            comboBox1.SelectedValue = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+            id = int.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString());
+            subcode.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            subname.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            subunits.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            subyear.SelectedItem = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+            comboBox1.SelectedItem = dataGridView1.CurrentRow.Cells[6].Value.ToString();
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "remove")
+            {
+                if (MessageBox.Show("Confirm?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    db.delete_subject(id);
+                    dataGridView1.DataSource = db.view_subject();
+                    MessageBox.Show("Subject deleted sucessfully", "Message");
+                    ClearData();
+                }
+            }
         }
     }
 }

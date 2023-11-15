@@ -95,9 +95,6 @@
     <Compile Include="AdminSubjectPage.Designer.cs">
       <DependentUpon>AdminSubjectPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Enrollment.cs">
-      <DependentUpon>Enrollment.dbml</DependentUpon>
-    </Compile>
     <Compile Include="Enrollment.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

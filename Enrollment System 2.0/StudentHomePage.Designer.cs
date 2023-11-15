@@ -36,6 +36,9 @@ namespace Enrollment_System_2._0
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.enroll_status = new System.Windows.Forms.Label();
+            this.course = new System.Windows.Forms.Label();
+            this.section = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -54,6 +57,7 @@ namespace Enrollment_System_2._0
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.section);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(515, 125);
             this.panel1.Name = "panel1";
@@ -65,14 +69,15 @@ namespace Enrollment_System_2._0
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label2.Location = new System.Drawing.Point(23, 14);
+            this.label2.Location = new System.Drawing.Point(65, 14);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(153, 20);
+            this.label2.Size = new System.Drawing.Size(70, 20);
             this.label2.TabIndex = 8;
-            this.label2.Text = "Enrollment Status";
+            this.label2.Text = "Section";
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.course);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Location = new System.Drawing.Point(290, 125);
             this.panel2.Name = "panel2";
@@ -84,14 +89,15 @@ namespace Enrollment_System_2._0
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label3.Location = new System.Drawing.Point(23, 14);
+            this.label3.Location = new System.Drawing.Point(68, 14);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(153, 20);
+            this.label3.Size = new System.Drawing.Size(66, 20);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Enrollment Status";
+            this.label3.Text = "Course";
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.enroll_status);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Location = new System.Drawing.Point(67, 125);
             this.panel3.Name = "panel3";
@@ -108,6 +114,36 @@ namespace Enrollment_System_2._0
             this.label4.Size = new System.Drawing.Size(153, 20);
             this.label4.TabIndex = 8;
             this.label4.Text = "Enrollment Status";
+            // 
+            // enroll_status
+            // 
+            this.enroll_status.AutoSize = true;
+            this.enroll_status.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.enroll_status.ForeColor = System.Drawing.Color.SteelBlue;
+            this.enroll_status.Location = new System.Drawing.Point(100, 89);
+            this.enroll_status.Name = "enroll_status";
+            this.enroll_status.Size = new System.Drawing.Size(0, 20);
+            this.enroll_status.TabIndex = 12;
+            // 
+            // course
+            // 
+            this.course.AutoSize = true;
+            this.course.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.course.ForeColor = System.Drawing.Color.SteelBlue;
+            this.course.Location = new System.Drawing.Point(100, 89);
+            this.course.Name = "course";
+            this.course.Size = new System.Drawing.Size(0, 20);
+            this.course.TabIndex = 12;
+            // 
+            // section
+            // 
+            this.section.AutoSize = true;
+            this.section.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.section.ForeColor = System.Drawing.Color.SteelBlue;
+            this.section.Location = new System.Drawing.Point(100, 89);
+            this.section.Name = "section";
+            this.section.Size = new System.Drawing.Size(0, 20);
+            this.section.TabIndex = 12;
             // 
             // StudentHomePage
             // 
@@ -141,5 +177,8 @@ namespace Enrollment_System_2._0
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label section;
+        private System.Windows.Forms.Label course;
+        private System.Windows.Forms.Label enroll_status;
     }
 }
