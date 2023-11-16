@@ -35,18 +35,21 @@ namespace Enrollment_System_2._0
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dtgrv.Columns[e.ColumnIndex].Name == "acceptbtn")
+            try
             {
-                EnrollStudent d = new EnrollStudent(this);
-                int id = int.Parse(dtgrv.CurrentRow.Cells[1].Value.ToString());
-                d.studentid = id;
-                d.ShowDialog();
-                //if (MessageBox.Show("Confirm?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                //{
-                //   
-                //    db.accept_enrollment(id);
-                //    dataGridView1.DataSource = db.enrollees_view();
-                //}
+                if (dtgrv.Columns[e.ColumnIndex].Name == "acceptbtn")
+                {
+                    int id = int.Parse(dtgrv.CurrentRow.Cells[1].Value.ToString());
+                    string name = (dtgrv.CurrentRow.Cells[2].Value.ToString());
+                    int count = db.get_stud(id).Count(); 
+                        EnrollStudent d = new EnrollStudent(this);
+                        d.studentid = id;
+                        d.ShowDialog();
+                }
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("No Records on selected cell.", "Message");
             }
         }
     }

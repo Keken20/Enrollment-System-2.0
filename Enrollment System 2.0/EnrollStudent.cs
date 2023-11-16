@@ -40,11 +40,18 @@ namespace Enrollment_System_2._0
 
         private void enroll_Click(object sender, EventArgs e)
         {
-            db.accept_enrollment(enrollmentid,studentid, Convert.ToInt32(comboBox1.SelectedValue));
-            db.update_status(studentid);
-            MessageBox.Show("Sucessfully enrolled", "Message");
-            adminEnrolleesDisplay.DisplayData();
-            Close();         
+            if(comboBox1.SelectedValue == null)
+            {
+                MessageBox.Show("Select section to enroll", "Message");
+            }
+            else
+            {
+                db.accept_enrollment(enrollmentid, studentid, Convert.ToInt32(comboBox1.SelectedValue));
+                db.update_status(studentid);
+                MessageBox.Show("Sucessfully enrolled", "Message");
+                adminEnrolleesDisplay.DisplayData();
+                Close();
+            }                
         }
     }
 }

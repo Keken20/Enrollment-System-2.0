@@ -101,5 +101,6 @@ namespace Enrollment_System_2._0
             mainpanel.Controls.Add(sp);
             sp.Show();
         }
+        
     }
 }

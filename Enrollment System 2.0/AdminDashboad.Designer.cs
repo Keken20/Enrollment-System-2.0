@@ -40,14 +40,14 @@ namespace Enrollment_System_2._0
             this.button5 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.mainpanel = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.panel1.Controls.Add(this.user);
             this.panel1.Controls.Add(this.admin);
             this.panel1.Controls.Add(this.button9);
@@ -58,10 +58,9 @@ namespace Enrollment_System_2._0
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(248, 741);
+            this.panel1.Size = new System.Drawing.Size(250, 741);
             this.panel1.TabIndex = 2;
             // 
             // user
@@ -88,7 +87,7 @@ namespace Enrollment_System_2._0
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.Color.SteelBlue;
             this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.Location = new System.Drawing.Point(0, 348);
+            this.button9.Location = new System.Drawing.Point(3, 451);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(245, 41);
             this.button9.TabIndex = 8;
@@ -103,7 +102,7 @@ namespace Enrollment_System_2._0
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.Color.SteelBlue;
             this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.Location = new System.Drawing.Point(0, 309);
+            this.button8.Location = new System.Drawing.Point(3, 412);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(245, 41);
             this.button8.TabIndex = 7;
@@ -117,7 +116,7 @@ namespace Enrollment_System_2._0
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.Color.SteelBlue;
             this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.Location = new System.Drawing.Point(0, 270);
+            this.button7.Location = new System.Drawing.Point(3, 373);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(245, 41);
             this.button7.TabIndex = 6;
@@ -132,7 +131,7 @@ namespace Enrollment_System_2._0
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.Color.SteelBlue;
             this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(1, 231);
+            this.button6.Location = new System.Drawing.Point(4, 334);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(244, 41);
             this.button6.TabIndex = 5;
@@ -147,7 +146,7 @@ namespace Enrollment_System_2._0
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.SteelBlue;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(0, 192);
+            this.button5.Location = new System.Drawing.Point(3, 295);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(245, 41);
             this.button5.TabIndex = 4;
@@ -162,7 +161,7 @@ namespace Enrollment_System_2._0
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.SteelBlue;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(0, 153);
+            this.button3.Location = new System.Drawing.Point(3, 256);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(245, 41);
             this.button3.TabIndex = 2;
@@ -177,7 +176,7 @@ namespace Enrollment_System_2._0
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.SteelBlue;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(0, 114);
+            this.button2.Location = new System.Drawing.Point(3, 217);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(245, 41);
             this.button2.TabIndex = 1;
@@ -186,6 +185,14 @@ namespace Enrollment_System_2._0
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // mainpanel
+            // 
+            this.mainpanel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.mainpanel.Location = new System.Drawing.Point(250, 0);
+            this.mainpanel.Name = "mainpanel";
+            this.mainpanel.Size = new System.Drawing.Size(984, 741);
+            this.mainpanel.TabIndex = 3;
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -193,7 +200,7 @@ namespace Enrollment_System_2._0
             this.button1.ForeColor = System.Drawing.Color.SteelBlue;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(0, 75);
+            this.button1.Location = new System.Drawing.Point(3, 178);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(245, 41);
             this.button1.TabIndex = 0;
@@ -202,21 +209,14 @@ namespace Enrollment_System_2._0
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // mainpanel
-            // 
-            this.mainpanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainpanel.Location = new System.Drawing.Point(248, 0);
-            this.mainpanel.Name = "mainpanel";
-            this.mainpanel.Size = new System.Drawing.Size(1035, 741);
-            this.mainpanel.TabIndex = 3;
-            // 
             // AdminDashboad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1283, 741);
+            this.ClientSize = new System.Drawing.Size(1234, 741);
             this.Controls.Add(this.mainpanel);
             this.Controls.Add(this.panel1);
+            this.MaximizeBox = false;
             this.Name = "AdminDashboad";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminDashboad";

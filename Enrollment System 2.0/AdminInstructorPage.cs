@@ -82,20 +82,30 @@ namespace Enrollment_System_2._0
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            id = int.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString());
-            instructorfname.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            instructorlname.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            comboBox1.SelectedItem = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-            if (dataGridView1.Columns[e.ColumnIndex].Name == "deletebtn")
+            try
             {
-                if (MessageBox.Show("Confirm?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                id = int.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString());
+                instructorfname.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                instructorlname.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                comboBox1.SelectedItem = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                if (dataGridView1.Columns[e.ColumnIndex].Name == "deletebtn")
                 {
-                    db.delete_instructor(id);
-                    dataGridView1.DataSource = db.view_instructor();
-                    MessageBox.Show("Instructor deleted sucessfully", "Message");
-                    ClearData();
+                    if (MessageBox.Show("Confirm?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        db.delete_instructor(id);
+                        dataGridView1.DataSource = db.view_instructor();
+                        MessageBox.Show("Instructor deleted sucessfully", "Message");
+                        ClearData();
+                    }
                 }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("No records found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+          
         }
+
+
     }
 }

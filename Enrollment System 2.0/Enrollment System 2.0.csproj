@@ -244,5 +244,26 @@
   <ItemGroup>
     <None Include="Resources\icons8-calendar-30.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-online-registration-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-student-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-student-registration-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-student-registration-501.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-teacher-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-teacher-501.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-student-registration-502.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

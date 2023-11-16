@@ -88,21 +88,28 @@ namespace Enrollment_System_2._0
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            id = int.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString());
-            subcode.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            subname.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            subunits.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-            subyear.SelectedItem = dataGridView1.CurrentRow.Cells[5].Value.ToString();
-            comboBox1.SelectedItem = dataGridView1.CurrentRow.Cells[6].Value.ToString();
-            if (dataGridView1.Columns[e.ColumnIndex].Name == "remove")
+            try
             {
-                if (MessageBox.Show("Confirm?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                id = int.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString());
+                subcode.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                subname.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                subunits.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                subyear.SelectedItem = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+                comboBox1.SelectedItem = dataGridView1.CurrentRow.Cells[6].Value.ToString();
+                if (dataGridView1.Columns[e.ColumnIndex].Name == "remove")
                 {
-                    db.delete_subject(id);
-                    dataGridView1.DataSource = db.view_subject();
-                    MessageBox.Show("Subject deleted sucessfully", "Message");
-                    ClearData();
+                    if (MessageBox.Show("Confirm?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        db.delete_subject(id);
+                        dataGridView1.DataSource = db.view_subject();
+                        MessageBox.Show("Subject deleted sucessfully", "Message");
+                        ClearData();
+                    }
                 }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No records found!", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
     }

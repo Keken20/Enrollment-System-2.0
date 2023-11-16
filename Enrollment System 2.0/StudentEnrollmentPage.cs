@@ -84,7 +84,6 @@ namespace Enrollment_System_2._0
                 firstname.Text = item.stud_fname;
                 middlename.Text = item.stud_mname;
             }
-            txtuser.Text = firstname.Text + " " + middlename.Text + " " + lastname.Text;
         }
     }
 }

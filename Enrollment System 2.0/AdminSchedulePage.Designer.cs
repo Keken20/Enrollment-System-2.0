@@ -42,8 +42,9 @@ namespace Enrollment_System_2._0
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.subject = new System.Windows.Forms.ComboBox();
             this.txtsection = new System.Windows.Forms.Label();
+            this.update = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -153,7 +154,7 @@ namespace Enrollment_System_2._0
             // panel1
             // 
             this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Location = new System.Drawing.Point(16, 116);
+            this.panel1.Location = new System.Drawing.Point(16, 144);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(862, 294);
             this.panel1.TabIndex = 45;
@@ -178,13 +179,13 @@ namespace Enrollment_System_2._0
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // comboBox1
+            // subject
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(183, 77);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(272, 21);
-            this.comboBox1.TabIndex = 47;
+            this.subject.FormattingEnabled = true;
+            this.subject.Location = new System.Drawing.Point(183, 77);
+            this.subject.Name = "subject";
+            this.subject.Size = new System.Drawing.Size(272, 21);
+            this.subject.TabIndex = 47;
             // 
             // txtsection
             // 
@@ -196,13 +197,30 @@ namespace Enrollment_System_2._0
             this.txtsection.Size = new System.Drawing.Size(0, 31);
             this.txtsection.TabIndex = 48;
             // 
+            // update
+            // 
+            this.update.BackColor = System.Drawing.Color.SteelBlue;
+            this.update.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.update.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.update.FlatAppearance.BorderSize = 0;
+            this.update.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.update.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.update.Location = new System.Drawing.Point(651, 10);
+            this.update.Name = "update";
+            this.update.Size = new System.Drawing.Size(73, 37);
+            this.update.TabIndex = 49;
+            this.update.Text = "Update";
+            this.update.UseVisualStyleBackColor = false;
+            this.update.Click += new System.EventHandler(this.update_Click);
+            // 
             // AdminSchedulePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(890, 450);
+            this.Controls.Add(this.update);
             this.Controls.Add(this.txtsection);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.subject);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.txbroom);
@@ -241,7 +259,8 @@ namespace Enrollment_System_2._0
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox subject;
         private System.Windows.Forms.Label txtsection;
+        private System.Windows.Forms.Button update;
     }
 }

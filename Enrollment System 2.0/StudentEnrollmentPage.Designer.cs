@@ -29,7 +29,6 @@ namespace Enrollment_System_2._0
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtuser = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.course = new System.Windows.Forms.ComboBox();
             this.sem = new System.Windows.Forms.ComboBox();
@@ -49,16 +48,6 @@ namespace Enrollment_System_2._0
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // txtuser
-            // 
-            this.txtuser.AutoSize = true;
-            this.txtuser.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtuser.ForeColor = System.Drawing.Color.SteelBlue;
-            this.txtuser.Location = new System.Drawing.Point(141, -5);
-            this.txtuser.Name = "txtuser";
-            this.txtuser.Size = new System.Drawing.Size(0, 31);
-            this.txtuser.TabIndex = 72;
             // 
             // label9
             // 
@@ -267,7 +256,6 @@ namespace Enrollment_System_2._0
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.txtuser);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.course);
             this.Controls.Add(this.sem);
@@ -296,8 +284,6 @@ namespace Enrollment_System_2._0
         }
 
         #endregion
-
-        private System.Windows.Forms.Label txtuser;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox course;
         private System.Windows.Forms.ComboBox sem;
