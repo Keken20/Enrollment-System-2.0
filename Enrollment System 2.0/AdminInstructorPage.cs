@@ -67,7 +67,7 @@ namespace Enrollment_System_2._0
             {
                 MessageBox.Show("Fill all informations", "Error");
             }
-            else if (instructorfname.Text != dataGridView1.CurrentRow.Cells[2].Value.ToString() || instructorlname.Text != dataGridView1.CurrentRow.Cells[3].Value.ToString())
+            else if (id != int.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString()))
             {
                 MessageBox.Show("Cannot Update, Data not in the Database", "Error");
             }
@@ -87,7 +87,7 @@ namespace Enrollment_System_2._0
                 id = int.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString());
                 instructorfname.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
                 instructorlname.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-                comboBox1.SelectedItem = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                comboBox1.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
                 if (dataGridView1.Columns[e.ColumnIndex].Name == "deletebtn")
                 {
                     if (MessageBox.Show("Confirm?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)

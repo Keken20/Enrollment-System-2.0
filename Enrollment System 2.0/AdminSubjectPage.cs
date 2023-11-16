@@ -63,8 +63,8 @@ namespace Enrollment_System_2._0
             subcode.Text = "";
             subname.Text = "";
             subunits.Text = "";
-            subyear.SelectedValue = "";
-            comboBox1.SelectedValue = "";
+            subyear.Text = "";
+            comboBox1.Text = "";
         }
 
         private void update_Click(object sender, EventArgs e)
@@ -73,7 +73,7 @@ namespace Enrollment_System_2._0
             {
                 MessageBox.Show("Fill all informations", "Error");
             }
-            else if (subcode.Text != dataGridView1.CurrentRow.Cells[2].Value.ToString() || subname.Text != dataGridView1.CurrentRow.Cells[3].Value.ToString() || subunits.Text != dataGridView1.CurrentRow.Cells[4].Value.ToString())
+            else if (id != int.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString()))
             {
                 MessageBox.Show("Cannot Update, Data not in the Database", "Error");
             }
@@ -94,8 +94,8 @@ namespace Enrollment_System_2._0
                 subcode.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
                 subname.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
                 subunits.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-                subyear.SelectedItem = dataGridView1.CurrentRow.Cells[5].Value.ToString();
-                comboBox1.SelectedItem = dataGridView1.CurrentRow.Cells[6].Value.ToString();
+                subyear.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+                comboBox1.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString();
                 if (dataGridView1.Columns[e.ColumnIndex].Name == "remove")
                 {
                     if (MessageBox.Show("Confirm?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)

@@ -71,6 +71,33 @@ namespace Enrollment_System_2._0
             txbroom.Text = " ";
         }
 
+        private void update_Click(object sender, EventArgs e)
+        {
+            if (txbsection.Text == "" || subject.SelectedValue == null || txbtime.Text == "" || txbday.Text == "" || txbroom.Text == "")
+            {
+                MessageBox.Show("Fill all informations", "Error");
+            }
+            else
+            {
+                schedid = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                int subid = Convert.ToInt32(subject.SelectedValue);
+                var result = db.get_sub_info(subid);
+                foreach (var item in result)
+                {
+                    sub = item.subject_name;
+                }
+                db.update_schedtbl(schedid, txbsection.Text, sub, txbtime.Text, txbday.Text, txbroom.Text);
+                DisplaySched();
+                MessageBox.Show("Updated successfully! ", "Message");
+                ClearData();
+            }
+        }
+
+        private void DisplaySched()
+        {
+            dataGridView1.DataSource = db.view_schedule(sectionid);
+        }
+
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridView1.CurrentRow.Index == dataGridView1.Rows.Count - 1)
@@ -90,24 +117,12 @@ namespace Enrollment_System_2._0
                 {
                     if (MessageBox.Show("Confirm?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        MessageBox.Show(" ", "Message");
+                        DisplaySched();
+                        MessageBox.Show("Schedule removed sucessfully", "Message");
+                        ClearData();
                     }
                 }
             }
-        }
-        private void update_Click(object sender, EventArgs e)
-        {
-            schedid = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-            int subid = Convert.ToInt32(subject.SelectedValue);
-            var result = db.get_sub_info(subid);
-            foreach (var item in result)
-            {
-                sub = item.subject_name;
-            }
-            db.update_schedtbl(schedid, txbsection.Text, sub, txbtime.Text, txbday.Text, txbroom.Text);
-            dataGridView1.DataSource = db.view_schedule(sectionid);
-            dataGridView1.Update();
-            MessageBox.Show("Updated successfully! ", "Message");
         }
     }
 }

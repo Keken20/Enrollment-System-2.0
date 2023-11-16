@@ -36,12 +36,14 @@ namespace Enrollment_System_2._0
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.studentpanel = new System.Windows.Forms.Panel();
+            this.studname = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel1.Controls.Add(this.studname);
             this.panel1.Controls.Add(this.button9);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button3);
@@ -136,6 +138,16 @@ namespace Enrollment_System_2._0
             this.studentpanel.Size = new System.Drawing.Size(810, 741);
             this.studentpanel.TabIndex = 4;
             // 
+            // studname
+            // 
+            this.studname.AutoSize = true;
+            this.studname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.studname.ForeColor = System.Drawing.Color.White;
+            this.studname.Location = new System.Drawing.Point(59, 32);
+            this.studname.Name = "studname";
+            this.studname.Size = new System.Drawing.Size(0, 20);
+            this.studname.TabIndex = 13;
+            // 
             // StudentDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -148,6 +160,7 @@ namespace Enrollment_System_2._0
             this.Text = "StudentDashboard";
             this.Load += new System.EventHandler(this.StudentDashboard_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -161,5 +174,6 @@ namespace Enrollment_System_2._0
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel studentpanel;
+        private System.Windows.Forms.Label studname;
     }
 }

@@ -15,10 +15,13 @@ namespace Enrollment_System_2._0
         EnrollmentDataContext db = new EnrollmentDataContext();
         int age;
         DateTime birth;
+        private readonly StudentDashboard studentdashboarddisplay;
+
         public string username { get; set; }
-        public StudentPIPage()
+        public StudentPIPage(StudentDashboard studentuserdisplay)
         {
             InitializeComponent();
+            studentdashboarddisplay = studentuserdisplay;
         }
 
         private void StudentPIPage_Load(object sender, EventArgs e)
@@ -34,6 +37,7 @@ namespace Enrollment_System_2._0
             db.get_stud_info(username);
             MessageBox.Show("Successfully Updated!", "Update", MessageBoxButtons.OK);
             DisplayData();
+            studentdashboarddisplay.DisplayName();
         }
         static int GetAge(DateTime birth)
         {
