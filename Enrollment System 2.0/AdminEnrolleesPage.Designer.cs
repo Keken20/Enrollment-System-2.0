@@ -102,9 +102,9 @@ namespace Enrollment_System_2._0
             this.label2.ForeColor = System.Drawing.Color.Transparent;
             this.label2.Location = new System.Drawing.Point(255, 23);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(375, 46);
+            this.label2.Size = new System.Drawing.Size(398, 46);
             this.label2.TabIndex = 4;
-            this.label2.Text = "ENROLEES PAGE";
+            this.label2.Text = "ENROLLEES PAGE";
             // 
             // panel1
             // 

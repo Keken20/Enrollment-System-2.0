@@ -40,6 +40,7 @@ namespace Enrollment_System_2._0
             this.button1 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.update = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel4.SuspendLayout();
@@ -95,7 +96,7 @@ namespace Enrollment_System_2._0
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(978, 583);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // comboBox1
             // 
@@ -156,12 +157,23 @@ namespace Enrollment_System_2._0
             this.label1.TabIndex = 4;
             this.label1.Text = "SECTION PAGE";
             // 
+            // update
+            // 
+            this.update.Location = new System.Drawing.Point(669, 120);
+            this.update.Name = "update";
+            this.update.Size = new System.Drawing.Size(75, 23);
+            this.update.TabIndex = 51;
+            this.update.Text = "Update";
+            this.update.UseVisualStyleBackColor = true;
+            this.update.Click += new System.EventHandler(this.update_Click);
+            // 
             // AdminSectionPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 741);
             this.Controls.Add(this.panel4);
+            this.Controls.Add(this.update);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txbname);
             this.Controls.Add(this.txbyear);
@@ -196,5 +208,6 @@ namespace Enrollment_System_2._0
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button update;
     }
 }

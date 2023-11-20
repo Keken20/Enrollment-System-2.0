@@ -14,6 +14,8 @@ namespace Enrollment_System_2._0
     {
         int courid;
         EnrollmentDataContext db = new EnrollmentDataContext();
+        int id;
+
         public AdminSectionPage()
         {
             InitializeComponent();
@@ -58,11 +60,32 @@ namespace Enrollment_System_2._0
                 MessageBox.Show("Section created sucessfully", "Message");
                 dataGridView1.DataSource = db.view_section();
             }
-           
+        }
+
+        private void ClearData()
+        {
+            comboBox1.SelectedValue = " ";
+            txbname.Text = " ";
+            txbyear.Text = " ";
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void update_Click(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedValue == null || txbyear.Text == " " || txbname.Text == "")
+            {
+                MessageBox.Show("Input all information first!", "Message");
+            }
+            else
+            {
+                db.update_section(id, comboBox1.SelectedValue.ToString(), txbyear.Text, txbname.Text);
+                dataGridView1.DataSource = db.view_section();
+                MessageBox.Show("Successfully Updated!", "Update", MessageBoxButtons.OK);
+                ClearData();
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if(dataGridView1.CurrentRow.Index == dataGridView1.Rows.Count - 1)
             {
@@ -70,6 +93,10 @@ namespace Enrollment_System_2._0
             }
             else
             {
+                id = int.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString());
+                comboBox1.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                txbyear.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                txbname.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
                 if (dataGridView1.Columns[e.ColumnIndex].Name == "view")
                 {
                     int secid = int.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString());
@@ -79,24 +106,17 @@ namespace Enrollment_System_2._0
                 }
                 else if (dataGridView1.Columns[e.ColumnIndex].Name == "remove")
                 {
-                    int secid = int.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString());
                     if (MessageBox.Show("Confirm?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        db.delete_section(secid);
+                        db.delete_section(id);
+                        db.delete_enrolled(id);
+                        db.delete_sched(id);
                         dataGridView1.DataSource = db.view_section();
                         MessageBox.Show("Section deleted sucessfully", "Message");
+                        ClearData();
                     }
                 }
             }
-           
         }
-        private void ClearData()
-        {
-            comboBox1.SelectedValue = " ";
-            txbname.Text = " ";
-            txbyear.Text = " ";
-
-        }
-
     }
 }

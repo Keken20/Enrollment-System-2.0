@@ -13,19 +13,24 @@ namespace Enrollment_System_2._0
     public partial class StudentDashboard : Form
     {
         public string username { get; set; }
+        EnrollmentDataContext db = new EnrollmentDataContext();
+        int studid;
+
         public StudentDashboard()
         {
             InitializeComponent();
         }
         private void StudentDashboard_Load(object sender, EventArgs e)
         {
-           StudentHomePage homepage = new StudentHomePage();
-           homepage.TopLevel = false;
-           homepage.Dock = DockStyle.Fill;
-           homepage.FormBorderStyle = FormBorderStyle.None;
-           studentpanel.Controls.Add(homepage);
-           homepage.username = username;
-           homepage.Show();
+            DisplayName();
+
+            StudentHomePage homepage = new StudentHomePage();
+            homepage.TopLevel = false;
+            homepage.Dock = DockStyle.Fill;
+            homepage.FormBorderStyle = FormBorderStyle.None;
+            studentpanel.Controls.Add(homepage);
+            homepage.username = username;
+            homepage.Show();
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -52,6 +57,21 @@ namespace Enrollment_System_2._0
             
         }
 
+        public void DisplayName()
+        {
+            var info = db.get_id(username).ToList();
+            foreach (var item in info)
+            {
+                studid = Convert.ToInt32(item.stud_id.ToString());
+            }
+
+            var stname = db.get_studname(studid).ToList();
+            foreach (var item in stname)
+            {
+                studname.Text = item.stud_lname.ToString() + ", " + item.stud_fname.ToString() + " " + item.stud_mname.ToString();
+            }
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
             studentpanel.Controls.Clear();
@@ -67,7 +87,7 @@ namespace Enrollment_System_2._0
         private void button4_Click(object sender, EventArgs e)
         {
             studentpanel.Controls.Clear();
-            StudentPIPage homepage = new StudentPIPage();
+            StudentPIPage homepage = new StudentPIPage(this);
             homepage.TopLevel = false;
             homepage.Dock = DockStyle.Fill;
             homepage.FormBorderStyle = FormBorderStyle.None;
