@@ -40,8 +40,17 @@ namespace Enrollment_System_2._0
                 courseid = GetCourseID(cre);
                 MessageBox.Show("Submitted Successfully");
                 db.enroll_student(yearlevel.SelectedItem.ToString(), acadyear.SelectedItem.ToString(), sem.SelectedItem.ToString(), status.SelectedItem.ToString(), Convert.ToInt32(id), Convert.ToInt32(courseid));
+                homePage();
             }
         }
+
+        public void homePage()
+        {
+            StudentHomePage shp = new StudentHomePage();
+            shp.Show();
+            this.Hide();
+        }
+
         public static int GetID(string username)
         {
             EnrollmentDataContext db = new EnrollmentDataContext();

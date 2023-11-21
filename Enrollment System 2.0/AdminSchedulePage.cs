@@ -34,12 +34,12 @@ namespace Enrollment_System_2._0
             this.subject.DisplayMember = "subject_name";
             this.subject.ValueMember = "subject_id";
 
-            DataGridViewButtonColumn remove = new DataGridViewButtonColumn();
-            remove.HeaderText = "Action";
-            remove.Name = "remove";
-            remove.Text = "Remove";
-            remove.UseColumnTextForButtonValue = true;
-            dataGridView1.Columns.Add(remove);
+            //DataGridViewButtonColumn remove = new DataGridViewButtonColumn();
+            //remove.HeaderText = "Action";
+            //remove.Name = "remove";
+            //remove.Text = "Remove";
+            //remove.UseColumnTextForButtonValue = true;
+            //dataGridView1.Columns.Add(remove);
             ClearData();
         }
 
@@ -57,9 +57,10 @@ namespace Enrollment_System_2._0
                 {
                     sub = item.subject_name;
                 }
-                db.add_schedule(txbsection.Text, sub, txbtime.Text, txbday.Text, txbday.Text, sectionid, subid);
+                db.add_schedule(txbsection.Text, sub, txbtime.Text, txbday.Text, txbroom.Text, sectionid, subid);
                 dataGridView1.DataSource = db.view_schedule(sectionid);
                 MessageBox.Show("Schedule added sucessfully", "Message");
+                ClearData();
             }        
         }
         private void ClearData()
@@ -113,15 +114,33 @@ namespace Enrollment_System_2._0
                 txbday.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString();
                 txbroom.Text = dataGridView1.CurrentRow.Cells[7].Value.ToString();
                 dataGridView1.Update();
-                if (dataGridView1.Columns[e.ColumnIndex].Name == "remove")
+                //if (dataGridView1.Columns[e.ColumnIndex].Name == "remove")
+                //{
+                //    if (MessageBox.Show("Confirm?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                //    {
+                //        DisplaySched();
+                //        MessageBox.Show("Schedule removed sucessfully", "Message");
+                //        ClearData();
+                //    }
+                //}
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("Confirm?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    if (MessageBox.Show("Confirm?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        DisplaySched();
-                        MessageBox.Show("Schedule removed sucessfully", "Message");
-                        ClearData();
-                    }
+                    db.delete_sched(schedid);
+                    DisplaySched();
+                    MessageBox.Show("Schedule removed sucessfully", "Message");
+                    ClearData();
                 }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No records found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

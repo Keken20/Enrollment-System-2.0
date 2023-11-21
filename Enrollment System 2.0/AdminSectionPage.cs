@@ -59,6 +59,7 @@ namespace Enrollment_System_2._0
                 db.add_section(comboBox1.SelectedValue.ToString(), txbyear.Text, txbname.Text, courid);
                 MessageBox.Show("Section created sucessfully", "Message");
                 dataGridView1.DataSource = db.view_section();
+                ClearData();
             }
         }
 

@@ -52,5 +52,10 @@ namespace Enrollment_System_2._0
                 MessageBox.Show("No Records on selected cell.", "Message");
             }
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            dtgrv.DataSource = db.search_enrollees_view(textBox1.Text);
+        }
     }
 }
