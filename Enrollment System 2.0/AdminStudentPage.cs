@@ -48,6 +48,7 @@ namespace Enrollment_System_2._0
                     if (MessageBox.Show("Confirm?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         db.unenroll_student(studid);
+                        db.delete_stud_status(studid);
                         LoadData();
                         MessageBox.Show("Student unerolled succesfully!", "Message");
                     }

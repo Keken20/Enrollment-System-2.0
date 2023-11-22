@@ -29,7 +29,6 @@ namespace Enrollment_System_2._0
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -39,21 +38,13 @@ namespace Enrollment_System_2._0
             this.label5 = new System.Windows.Forms.Label();
             this.enroll = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Info = new System.Windows.Forms.Label();
+            this.cmbSection = new System.Windows.Forms.ComboBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.Info = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(550, 162);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 33);
-            this.comboBox1.TabIndex = 8;
             // 
             // label3
             // 
@@ -158,7 +149,7 @@ namespace Enrollment_System_2._0
             this.panel1.Controls.Add(this.enroll);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.cmbSection);
             this.panel1.Controls.Add(this.tbyrlv);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.tbcourse);
@@ -168,6 +159,33 @@ namespace Enrollment_System_2._0
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 358);
             this.panel1.TabIndex = 48;
+            // 
+            // Info
+            // 
+            this.Info.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Info.AutoSize = true;
+            this.Info.BackColor = System.Drawing.Color.Transparent;
+            this.Info.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Info.ForeColor = System.Drawing.Color.Black;
+            this.Info.Location = new System.Drawing.Point(252, 13);
+            this.Info.Margin = new System.Windows.Forms.Padding(0);
+            this.Info.MaximumSize = new System.Drawing.Size(400, 400);
+            this.Info.Name = "Info";
+            this.Info.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.Info.Size = new System.Drawing.Size(0, 39);
+            this.Info.TabIndex = 48;
+            this.Info.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // cmbSection
+            // 
+            this.cmbSection.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSection.FormattingEnabled = true;
+            this.cmbSection.Location = new System.Drawing.Point(547, 163);
+            this.cmbSection.Name = "cmbSection";
+            this.cmbSection.Size = new System.Drawing.Size(200, 33);
+            this.cmbSection.TabIndex = 8;
             // 
             // panel4
             // 
@@ -192,24 +210,6 @@ namespace Enrollment_System_2._0
             this.label1.TabIndex = 4;
             this.label1.Text = "ENROLL STUDENT PAGE";
             // 
-            // Info
-            // 
-            this.Info.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Info.AutoSize = true;
-            this.Info.BackColor = System.Drawing.Color.Transparent;
-            this.Info.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Info.ForeColor = System.Drawing.Color.Black;
-            this.Info.Location = new System.Drawing.Point(252, 13);
-            this.Info.Margin = new System.Windows.Forms.Padding(0);
-            this.Info.MaximumSize = new System.Drawing.Size(400, 400);
-            this.Info.Name = "Info";
-            this.Info.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Info.Size = new System.Drawing.Size(0, 39);
-            this.Info.TabIndex = 48;
-            this.Info.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // EnrollStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -232,7 +232,6 @@ namespace Enrollment_System_2._0
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
@@ -245,5 +244,6 @@ namespace Enrollment_System_2._0
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label Info;
+        private System.Windows.Forms.ComboBox cmbSection;
     }
 }

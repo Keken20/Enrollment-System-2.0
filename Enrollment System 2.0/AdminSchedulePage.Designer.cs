@@ -45,6 +45,7 @@ namespace Enrollment_System_2._0
             this.subject = new System.Windows.Forms.ComboBox();
             this.txtsection = new System.Windows.Forms.Label();
             this.update = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -214,6 +215,16 @@ namespace Enrollment_System_2._0
             this.update.UseVisualStyleBackColor = false;
             this.update.Click += new System.EventHandler(this.update_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(803, 105);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 46;
+            this.button2.Text = "Remove";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // AdminSchedulePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -222,6 +233,7 @@ namespace Enrollment_System_2._0
             this.Controls.Add(this.update);
             this.Controls.Add(this.txtsection);
             this.Controls.Add(this.subject);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.txbroom);
@@ -263,5 +275,6 @@ namespace Enrollment_System_2._0
         private System.Windows.Forms.ComboBox subject;
         private System.Windows.Forms.Label txtsection;
         private System.Windows.Forms.Button update;
+        private System.Windows.Forms.Button button2;
     }
 }
