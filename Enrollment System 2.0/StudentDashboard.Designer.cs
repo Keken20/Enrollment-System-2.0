@@ -30,13 +30,13 @@ namespace Enrollment_System_2._0
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.studname = new System.Windows.Forms.Label();
             this.button9 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.studentpanel = new System.Windows.Forms.Panel();
-            this.studname = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,6 +54,16 @@ namespace Enrollment_System_2._0
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(274, 741);
             this.panel1.TabIndex = 3;
+            // 
+            // studname
+            // 
+            this.studname.AutoSize = true;
+            this.studname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.studname.ForeColor = System.Drawing.Color.White;
+            this.studname.Location = new System.Drawing.Point(59, 32);
+            this.studname.Name = "studname";
+            this.studname.Size = new System.Drawing.Size(0, 20);
+            this.studname.TabIndex = 13;
             // 
             // button9
             // 
@@ -138,16 +148,6 @@ namespace Enrollment_System_2._0
             this.studentpanel.Size = new System.Drawing.Size(810, 741);
             this.studentpanel.TabIndex = 4;
             // 
-            // studname
-            // 
-            this.studname.AutoSize = true;
-            this.studname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.studname.ForeColor = System.Drawing.Color.White;
-            this.studname.Location = new System.Drawing.Point(59, 32);
-            this.studname.Name = "studname";
-            this.studname.Size = new System.Drawing.Size(0, 20);
-            this.studname.TabIndex = 13;
-            // 
             // StudentDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -155,6 +155,7 @@ namespace Enrollment_System_2._0
             this.ClientSize = new System.Drawing.Size(1084, 741);
             this.Controls.Add(this.studentpanel);
             this.Controls.Add(this.panel1);
+            this.MinimizeBox = false;
             this.Name = "StudentDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StudentDashboard";

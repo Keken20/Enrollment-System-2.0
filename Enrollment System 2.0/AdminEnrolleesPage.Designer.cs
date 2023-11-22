@@ -60,6 +60,7 @@ namespace Enrollment_System_2._0
             this.dtgrv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgrv.Location = new System.Drawing.Point(3, 50);
             this.dtgrv.Name = "dtgrv";
+            this.dtgrv.RowHeadersVisible = false;
             this.dtgrv.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dtgrv.Size = new System.Drawing.Size(978, 601);
             this.dtgrv.TabIndex = 11;

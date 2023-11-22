@@ -84,20 +84,28 @@ namespace Enrollment_System_2._0
         {
             try
             {
-                id = int.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString());
-                instructorfname.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-                instructorlname.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-                comboBox1.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-                if (dataGridView1.Columns[e.ColumnIndex].Name == "deletebtn")
+                if (dataGridView1.CurrentRow.Index == dataGridView1.Rows.Count - 1)
                 {
-                    if (MessageBox.Show("Confirm?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    MessageBox.Show("No records found!", "Message");
+                }
+                else
+                {
+                    id = int.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString());
+                    instructorfname.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                    instructorlname.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                    comboBox1.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                    if (dataGridView1.Columns[e.ColumnIndex].Name == "deletebtn")
                     {
-                        db.delete_instructor(id);
-                        dataGridView1.DataSource = db.view_instructor();
-                        MessageBox.Show("Instructor deleted sucessfully", "Message");
-                        ClearData();
+                        if (MessageBox.Show("Confirm?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            db.delete_instructor(id);
+                            dataGridView1.DataSource = db.view_instructor();
+                            MessageBox.Show("Instructor deleted sucessfully", "Message");
+                            ClearData();
+                        }
                     }
                 }
+                
             }
             catch (Exception)
             {
@@ -105,7 +113,5 @@ namespace Enrollment_System_2._0
             }
           
         }
-
-
     }
 }

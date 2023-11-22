@@ -56,11 +56,7 @@ namespace Enrollment_System_2._0
             this.label16 = new System.Windows.Forms.Label();
             this.tel = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -365,90 +361,39 @@ namespace Enrollment_System_2._0
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.AliceBlue;
-            this.label5.Location = new System.Drawing.Point(183, 235);
+            this.label5.Location = new System.Drawing.Point(1, 233);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 3, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(148, 25);
+            this.label5.Size = new System.Drawing.Size(343, 138);
             this.label5.TabIndex = 7;
-            this.label5.Text = "Welcome to the";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.AliceBlue;
-            this.label6.Location = new System.Drawing.Point(162, 275);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(172, 25);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "CCICT Enrollment";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.AliceBlue;
-            this.label7.Location = new System.Drawing.Point(256, 315);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(78, 25);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "System";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label5.Text = "Welcome to the\r\nCCICT Enrollment\r\nSystem";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.label18);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(344, 749);
+            this.panel2.Size = new System.Drawing.Size(354, 749);
             this.panel2.TabIndex = 12;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.AliceBlue;
-            this.label8.Location = new System.Drawing.Point(244, 629);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(96, 16);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "Aiken Canama";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.AliceBlue;
-            this.label9.Location = new System.Drawing.Point(268, 613);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(72, 16);
-            this.label9.TabIndex = 14;
-            this.label9.Text = "Seth Bucol";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.AliceBlue;
             this.label18.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label18.Location = new System.Drawing.Point(246, 597);
+            this.label18.Location = new System.Drawing.Point(202, 622);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(95, 16);
+            this.label18.Size = new System.Drawing.Size(142, 75);
             this.label18.TabIndex = 13;
-            this.label18.Text = "Developed By";
+            this.label18.Text = "Developed By\r\nSeth Bucol\r\nAiken Canama";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // RegistrationForm
             // 
@@ -498,11 +443,7 @@ namespace Enrollment_System_2._0
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox tel;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label18;
     }
 }

@@ -54,5 +54,7 @@ namespace Enrollment_System_2._0
                 section.Text = "N/A";
             }
         }
+
+
     }
 }

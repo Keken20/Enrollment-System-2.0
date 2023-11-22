@@ -53,5 +53,15 @@ namespace Enrollment_System_2._0.Properties {
                 return ((string)(this["enrollmentConnectionString2"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-H27FGSQ;Initial Catalog=enrollment;Integrated Security=True")]
+        public string enrollmentConnectionString3 {
+            get {
+                return ((string)(this["enrollmentConnectionString3"]));
+            }
+        }
     }
 }

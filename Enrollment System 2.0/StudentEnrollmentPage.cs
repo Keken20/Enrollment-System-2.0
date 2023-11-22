@@ -94,5 +94,7 @@ namespace Enrollment_System_2._0
                 middlename.Text = item.stud_mname;
             }
         }
+
+
     }
 }

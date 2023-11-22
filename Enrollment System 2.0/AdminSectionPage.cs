@@ -88,36 +88,44 @@ namespace Enrollment_System_2._0
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(dataGridView1.CurrentRow.Index == dataGridView1.Rows.Count - 1)
+            try
             {
-                MessageBox.Show("No records found!", "Message");
-            }
-            else
-            {
-                id = int.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString());
-                comboBox1.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-                txbyear.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-                txbname.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
-                if (dataGridView1.Columns[e.ColumnIndex].Name == "view")
+                if (dataGridView1.CurrentRow.Index == dataGridView1.Rows.Count - 1)
                 {
-                    int secid = int.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString());
-                    AdminSchedulePage g = new AdminSchedulePage();
-                    g.sectionid = secid;
-                    g.ShowDialog();
+                    MessageBox.Show("No records found!", "Message");
                 }
-                else if (dataGridView1.Columns[e.ColumnIndex].Name == "remove")
+                else
                 {
-                    if (MessageBox.Show("Confirm?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    id = int.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString());
+                    comboBox1.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                    txbyear.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                    txbname.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+                    if (dataGridView1.Columns[e.ColumnIndex].Name == "view")
                     {
-                        db.delete_section(id);
-                        db.delete_enrolled(id);
-                        db.delete_sched(id);
-                        dataGridView1.DataSource = db.view_section();
-                        MessageBox.Show("Section deleted sucessfully", "Message");
-                        ClearData();
+                        int secid = int.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString());
+                        AdminSchedulePage g = new AdminSchedulePage();
+                        g.sectionid = secid;
+                        g.ShowDialog();
+                    }
+                    else if (dataGridView1.Columns[e.ColumnIndex].Name == "remove")
+                    {
+                        if (MessageBox.Show("Confirm?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            db.delete_section(id);
+                            db.delete_enrolled(id);
+                            db.delete_sched(id);
+                            dataGridView1.DataSource = db.view_section();
+                            MessageBox.Show("Section deleted sucessfully", "Message");
+                            ClearData();
+                        }
                     }
                 }
             }
+            catch(Exception)
+            {
+                MessageBox.Show("No records found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
     }
 }
