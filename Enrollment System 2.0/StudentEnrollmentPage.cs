@@ -17,6 +17,7 @@ namespace Enrollment_System_2._0
         int id;
         int courseid;
         string cre;
+
         public StudentEnrollmentPage()
         {
             InitializeComponent();
@@ -29,26 +30,31 @@ namespace Enrollment_System_2._0
 
         private void submit_Click(object sender, EventArgs e)
         {
-            if (IsEmpty() is true)
+            if (IsEmpty())
             {
-                MessageBox.Show("Fill all needed informations");
+                MessageBox.Show("Fill all needed information");
             }
             else
             {
                 id = GetID(username.ToString());
-                cre = course.Text;
-                courseid = GetCourseID(cre);
-                MessageBox.Show("Submitted Successfully");
-                db.enroll_student(yearlevel.SelectedItem.ToString(), acadyear.SelectedItem.ToString(), sem.SelectedItem.ToString(), status.SelectedItem.ToString(), Convert.ToInt32(id), Convert.ToInt32(courseid));
-                homePage();
-            }
-        }
 
-        public void homePage()
-        {
-            StudentHomePage shp = new StudentHomePage();
-            shp.Show();
-            this.Hide();
+                if (db.duplicate_enrollee(id, acadyear.Text, sem.Text) > 0 )
+                {
+                    MessageBox.Show("Enrollee already exists. Submission failed.");
+                }
+                else if (db.duplicate_enrollee_pending(id) > 0)
+                {
+                    MessageBox.Show("Enrollee already exists. Submission failed.");
+                }
+                else
+                {
+                    id = GetID(username.ToString());
+                    cre = course.Text;
+                    courseid = GetCourseID(cre);
+                    MessageBox.Show("Submitted Successfully");
+                    db.enroll_student(yearlevel.SelectedItem.ToString(), acadyear.SelectedItem.ToString(), sem.SelectedItem.ToString(), status.SelectedItem.ToString(), Convert.ToInt32(id), Convert.ToInt32(courseid));
+                }
+            }
         }
 
         public static int GetID(string username)
@@ -62,6 +68,7 @@ namespace Enrollment_System_2._0
             }
             return id;
         }
+
         public static int GetCourseID(string course)
         {
             EnrollmentDataContext db = new EnrollmentDataContext();
@@ -73,6 +80,7 @@ namespace Enrollment_System_2._0
             }
             return courseid;
         }
+
         bool IsEmpty()
         {
             if (lastname.Text == "" || firstname.Text == "" || middlename.Text == "" || status.Text == "" || acadyear.Text == "")
@@ -84,6 +92,7 @@ namespace Enrollment_System_2._0
                 return false;
             }
         }
+
         public void DisplayData()
         {
             var info = db.get_info(username);
@@ -94,7 +103,5 @@ namespace Enrollment_System_2._0
                 middlename.Text = item.stud_mname;
             }
         }
-
-
     }
 }

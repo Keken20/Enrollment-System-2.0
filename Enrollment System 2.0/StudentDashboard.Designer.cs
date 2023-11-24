@@ -29,6 +29,7 @@ namespace Enrollment_System_2._0
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentDashboard));
             this.panel1 = new System.Windows.Forms.Panel();
             this.studname = new System.Windows.Forms.Label();
             this.button9 = new System.Windows.Forms.Button();
@@ -155,6 +156,7 @@ namespace Enrollment_System_2._0
             this.ClientSize = new System.Drawing.Size(1084, 741);
             this.Controls.Add(this.studentpanel);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;
             this.Name = "StudentDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -31,12 +31,12 @@ namespace Enrollment_System_2._0
             {
                 Info.Text = item.stud_fname + " " + item.stud_mname + " " + item.stud_lname;
                 tbcourse.Text = item.section_course;
-                tbyrlv.Text = item.section_yearlevel;
-                enrollmentid =item.enrollment_id;
+                tbyrlv.Text = item.enrollment_yearlevel;
+                enrollmentid = item.enrollment_id;
             }
             try
             {
-                var sections = db.enroll_stud_section(tbcourse.Text, tbyrlv.Text);
+                var sections = db.enroll_stud_section(enrollmentid, int.Parse(tbyrlv.Text));
                 cmbSection.DataSource = sections;
                 cmbSection.DisplayMember = "section_name";
                 cmbSection.ValueMember = "section_id";
@@ -59,7 +59,7 @@ namespace Enrollment_System_2._0
                 db.update_status(studentid);
                 MessageBox.Show("Sucessfully enrolled", "Message");
                 adminEnrolleesDisplay.DisplayData();
-                Close();
+                this.Close();
             }                
         }
     }

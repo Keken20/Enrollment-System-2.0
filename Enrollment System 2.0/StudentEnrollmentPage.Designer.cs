@@ -29,6 +29,7 @@ namespace Enrollment_System_2._0
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentEnrollmentPage));
             this.label9 = new System.Windows.Forms.Label();
             this.course = new System.Windows.Forms.ComboBox();
             this.sem = new System.Windows.Forms.ComboBox();
@@ -290,6 +291,7 @@ namespace Enrollment_System_2._0
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lastname);
             this.Controls.Add(this.label2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "StudentEnrollmentPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StudentEnrollmentPage";
