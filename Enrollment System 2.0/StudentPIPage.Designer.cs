@@ -29,6 +29,7 @@ namespace Enrollment_System_2._0
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentPIPage));
             this.txtuser = new System.Windows.Forms.Label();
             this.txtgender = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -110,10 +111,10 @@ namespace Enrollment_System_2._0
             this.dtpbday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpbday.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpbday.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpbday.Location = new System.Drawing.Point(431, 205);
             this.dtpbday.Name = "dtpbday";
-            this.dtpbday.Size = new System.Drawing.Size(207, 27);
+            this.dtpbday.Size = new System.Drawing.Size(207, 22);
             this.dtpbday.TabIndex = 74;
             // 
             // txtaddress
@@ -333,6 +334,7 @@ namespace Enrollment_System_2._0
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtlname);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "StudentPIPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StudentPIPage";

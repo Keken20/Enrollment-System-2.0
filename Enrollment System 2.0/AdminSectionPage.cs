@@ -90,35 +90,30 @@ namespace Enrollment_System_2._0
         {
             try
             {
-                if (dataGridView1.CurrentRow.Index == dataGridView1.Rows.Count - 1)
+                id = int.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString());
+                comboBox1.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                txbyear.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                txbname.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+                if (dataGridView1.Columns[e.ColumnIndex].Name == "view")
                 {
-                    MessageBox.Show("No records found!", "Message");
+                    int secid = int.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString());
+                    AdminSchedulePage g = new AdminSchedulePage();
+                    g.sectionid = secid;
+                    g.ShowDialog();
+                    ClearData();
                 }
-                else
+                else if (dataGridView1.Columns[e.ColumnIndex].Name == "remove")
                 {
-                    id = int.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString());
-                    comboBox1.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-                    txbyear.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-                    txbname.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
-                    if (dataGridView1.Columns[e.ColumnIndex].Name == "view")
+                    if (MessageBox.Show("Confirm?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        int secid = int.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString());
-                        AdminSchedulePage g = new AdminSchedulePage();
-                        g.sectionid = secid;
-                        g.ShowDialog();
+                        db.delete_section(id);
+                        db.delete_enrolled(id);
+                        db.delete_sched(id);
+                        dataGridView1.DataSource = db.view_section();
+                        MessageBox.Show("Section deleted sucessfully", "Message");
+                        ClearData();
                     }
-                    else if (dataGridView1.Columns[e.ColumnIndex].Name == "remove")
-                    {
-                        if (MessageBox.Show("Confirm?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                        {
-                            db.delete_section(id);
-                            db.delete_enrolled(id);
-                            db.delete_sched(id);
-                            dataGridView1.DataSource = db.view_section();
-                            MessageBox.Show("Section deleted sucessfully", "Message");
-                            ClearData();
-                        }
-                    }
+                    ClearData();
                 }
             }
             catch(Exception)

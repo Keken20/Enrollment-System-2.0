@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="enrollment" Class="EnrollmentDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-H27FGSQ;Initial Catalog=enrollment;Integrated Security=True" SettingsObjectName="Enrollment_System_2._0.Properties.Settings" SettingsPropertyName="enrollmentConnectionString3" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=SETH\SQLEXPRESS;Initial Catalog=enrollment;Integrated Security=True" SettingsObjectName="Enrollment_System_2._0.Properties.Settings" SettingsPropertyName="enrollmentConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.admin" Member="admins">
     <Type Name="admin">
       <Column Name="admin_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -7,13 +7,26 @@
       <Column Name="pass" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.subject_tbl" Member="subject_tbls">
+    <Type Name="subject_tbl">
+      <Column Name="subject_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="subject_code" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="subject_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="subject_unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="subject_yearlevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="course_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="subject_tbl_ins_tbl" Member="ins_tbls" ThisKey="subject_id" OtherKey="subject_id" Type="ins_tbl" />
+      <Association Name="subject_tbl_sched_tbl" Member="sched_tbls" ThisKey="subject_id" OtherKey="subject_id" Type="sched_tbl" />
+      <Association Name="course_tbl_subject_tbl" Member="course_tbl" ThisKey="course_id" OtherKey="course_id" Type="course_tbl" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.course_tbl" Member="course_tbls">
     <Type Name="course_tbl">
       <Column Name="course_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="course_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="course_tbl_subject_tbl" Member="subject_tbls" ThisKey="course_id" OtherKey="course_id" Type="subject_tbl" />
       <Association Name="course_tbl_enrollment_tbl" Member="enrollment_tbls" ThisKey="course_id" OtherKey="course_id" Type="enrollment_tbl" />
       <Association Name="course_tbl_section_tbl" Member="section_tbls" ThisKey="course_id" OtherKey="course_id" Type="section_tbl" />
-      <Association Name="course_tbl_subject_tbl" Member="subject_tbls" ThisKey="course_id" OtherKey="course_id" Type="subject_tbl" />
     </Type>
   </Table>
   <Table Name="dbo.enrolled_student" Member="enrolled_students">
@@ -22,7 +35,7 @@
       <Column Name="stud_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="section_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="enrollment_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="enrollment_tbl_enrolled_student" Member="enrollment_tbl" ThisKey="enrollment_id" OtherKey="enrollment_id" Type="enrollment_tbl" IsForeignKey="true" />
+      <Association Name="enrollment_tbl_enrolled_student" Member="enrollment_tbl" ThisKey="enrollment_id" OtherKey="enrollment_id" Type="enrollment_tbl" IsForeignKey="true" DeleteRule="CASCADE" />
       <Association Name="section_tbl_enrolled_student" Member="section_tbl" ThisKey="section_id" OtherKey="section_id" Type="section_tbl" IsForeignKey="true" DeleteRule="CASCADE" />
       <Association Name="stud_account_enrolled_student" Member="stud_account" ThisKey="stud_id" OtherKey="stud_id" Type="stud_account" IsForeignKey="true" />
     </Type>
@@ -62,8 +75,8 @@
       <Column Name="sched_room" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="section_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="subject_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="section_tbl_sched_tbl" Member="section_tbl" ThisKey="section_id" OtherKey="section_id" Type="section_tbl" IsForeignKey="true" DeleteRule="CASCADE" />
       <Association Name="subject_tbl_sched_tbl" Member="subject_tbl" ThisKey="subject_id" OtherKey="subject_id" Type="subject_tbl" IsForeignKey="true" />
+      <Association Name="section_tbl_sched_tbl" Member="section_tbl" ThisKey="section_id" OtherKey="section_id" Type="section_tbl" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>
   <Table Name="dbo.section_tbl" Member="section_tbls">
@@ -92,22 +105,8 @@
       <Column Name="stud_address" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="stud_email" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
       <Column Name="stud_tel" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="stud_isActive" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Association Name="stud_account_enrolled_student" Member="enrolled_students" ThisKey="stud_id" OtherKey="stud_id" Type="enrolled_student" />
       <Association Name="stud_account_enrollment_tbl" Member="enrollment_tbls" ThisKey="stud_id" OtherKey="stud_id" Type="enrollment_tbl" />
-    </Type>
-  </Table>
-  <Table Name="dbo.subject_tbl" Member="subject_tbls">
-    <Type Name="subject_tbl">
-      <Column Name="subject_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="subject_code" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="subject_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="subject_unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="subject_yearlevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="course_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="subject_tbl_ins_tbl" Member="ins_tbls" ThisKey="subject_id" OtherKey="subject_id" Type="ins_tbl" />
-      <Association Name="subject_tbl_sched_tbl" Member="sched_tbls" ThisKey="subject_id" OtherKey="subject_id" Type="sched_tbl" />
-      <Association Name="course_tbl_subject_tbl" Member="course_tbl" ThisKey="course_id" OtherKey="course_id" Type="course_tbl" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.accept_enrollment" Method="accept_enrollment">
@@ -115,6 +114,16 @@
     <Parameter Name="studid" Type="System.Int32" DbType="Int" />
     <Parameter Name="sectionid" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.view_subject" Method="view_subject">
+    <ElementType Name="view_subjectResult">
+      <Column Name="[Subject ID]" Member="Subject_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Subject Code]" Member="Subject_Code" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="[Subject Name]" Member="Subject_Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Units" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[Subject Level]" Member="Subject_Level" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Course" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
   </Function>
   <Function Name="dbo.add_instructor" Method="add_instructor">
     <Parameter Name="fname" Type="System.String" DbType="VarChar(50)" />
@@ -203,51 +212,9 @@
     <Parameter Name="id" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.delete_stud_status" Method="delete_stud_status">
-    <Parameter Name="id" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="dbo.delete_subject" Method="delete_subject">
     <Parameter Name="id" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.enroll_stud_section" Method="enroll_stud_section">
-    <Parameter Name="course" Type="System.String" DbType="VarChar(10)" />
-    <Parameter Name="yrlvl" Type="System.String" DbType="VarChar(5)" />
-    <ElementType Name="enroll_stud_sectionResult">
-      <Column Name="section_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="section_course" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="section_yearlevel" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
-      <Column Name="section_name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.enroll_student" Method="enroll_student">
-    <Parameter Name="year" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="acadyear" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="sem" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="studstas" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="id" Type="System.Int32" DbType="Int" />
-    <Parameter Name="course_id" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.enrolled_view" Method="enrolled_view">
-    <ElementType Name="enrolled_viewResult">
-      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Name" Type="System.String" DbType="VarChar(152) NOT NULL" CanBeNull="false" />
-      <Column Name="Section" Type="System.String" DbType="VarChar(37) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.enrollees_view" Method="enrollees_view">
-    <ElementType Name="enrollees_viewResult">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="[Full Name]" Member="Full_Name" Type="System.String" DbType="VarChar(153)" CanBeNull="true" />
-      <Column Name="[Year Level]" Member="Year_Level" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="Semester" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="Course" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="[Student Status]" Member="Student_Status" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="Status" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-    </ElementType>
   </Function>
   <Function Name="dbo.get_course" Method="get_course">
     <ElementType Name="get_courseResult">
@@ -263,6 +230,12 @@
       <Column Name="section_name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.get_courseid" Method="get_courseid">
+    <Parameter Name="course" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="get_courseidResult">
+      <Column Name="course_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
   <Function Name="dbo.get_enrolled_info" Method="get_enrolled_info">
     <Parameter Name="id" Type="System.Int32" DbType="Int" />
     <ElementType Name="get_enrolled_infoResult">
@@ -270,22 +243,6 @@
       <Column Name="stud_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="section_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="enrollment_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.get_courseid" Method="get_courseid">
-    <Parameter Name="course" Type="System.String" DbType="VarChar(50)" />
-    <ElementType Name="get_courseidResult">
-      <Column Name="course_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.get_section_info" Method="get_section_info">
-    <Parameter Name="sectionid" Type="System.Int32" DbType="Int" />
-    <ElementType Name="get_section_infoResult">
-      <Column Name="section_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="section_course" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="section_yearlevel" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
-      <Column Name="section_name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="course_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.get_id" Method="get_id">
@@ -302,44 +259,20 @@
       <Column Name="stud_mname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.get_status" Method="get_status">
-    <Parameter Name="id" Type="System.Int32" DbType="Int" />
-    <ElementType Name="get_statusResult">
-      <Column Name="enrollment_status" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.get_stud" Method="get_stud">
-    <Parameter Name="id" Type="System.Int32" DbType="Int" />
-    <ElementType Name="get_studResult">
-      <Column Name="stud_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="stud_username" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="stud_password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="stud_fname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="stud_mname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="stud_lname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="stud_gender" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="stud_bd" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="stud_age" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="stud_address" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="stud_email" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="stud_tel" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="stud_isActive" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="enrollment_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="enrollment_yearlevel" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="enrollment_schoolyear" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="enrollment_semester" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="enrollment_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="enrollment_studstatus" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="enrollment_status" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="stud_id1" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="course_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="course_id1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="course_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+  <Function Name="dbo.get_section_info" Method="get_section_info">
+    <Parameter Name="sectionid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="get_section_infoResult">
       <Column Name="section_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="section_course" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="section_yearlevel" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
       <Column Name="section_name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="course_id2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="course_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.get_status" Method="get_status">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="get_statusResult">
+      <Column Name="enrollment_status" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.get_stud_info" Method="get_stud_info">
@@ -393,9 +326,18 @@
       <Column Name="Section" Type="System.String" DbType="VarChar(37) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.unenroll_student" Method="unenroll_student">
-    <Parameter Name="id" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
+  <Function Name="dbo.search_enrollees_view" Method="search_enrollees_view">
+    <Parameter Name="key" Type="System.String" DbType="VarChar(MAX)" />
+    <ElementType Name="search_enrollees_viewResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Full Name]" Member="Full_Name" Type="System.String" DbType="VarChar(153)" CanBeNull="true" />
+      <Column Name="[Year Level]" Member="Year_Level" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Semester" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Course" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="[Student Status]" Member="Student_Status" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </ElementType>
   </Function>
   <Function Name="dbo.update_instructor" Method="update_instructor">
     <Parameter Name="ins_id" Type="System.Int32" DbType="Int" />
@@ -413,15 +355,15 @@
     <Parameter Name="room" Type="System.String" DbType="VarChar(50)" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.update_status" Method="update_status">
-    <Parameter Name="id" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="dbo.update_section" Method="update_section">
     <Parameter Name="section_id" Type="System.Int32" DbType="Int" />
     <Parameter Name="section_course" Type="System.String" DbType="VarChar(10)" />
     <Parameter Name="section_yearlevel" Type="System.String" DbType="VarChar(5)" />
     <Parameter Name="section_name" Type="System.String" DbType="VarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.update_status" Method="update_status">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.update_stud_info" Method="update_stud_info">
@@ -445,15 +387,6 @@
     <Parameter Name="subject_year" Type="System.Int32" DbType="Int" />
     <Parameter Name="course_id" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.view_cor" Method="view_cor">
-    <Parameter Name="studid" Type="System.Int32" DbType="Int" />
-    <ElementType Name="view_corResult">
-      <Column Name="Subject" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="[Subject Description]" Member="Subject_Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="[Unit/s]" Member="Unit_s" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Insructor" Type="System.String" DbType="VarChar(55)" CanBeNull="true" />
-    </ElementType>
   </Function>
   <Function Name="dbo.view_instructor" Method="view_instructor">
     <ElementType Name="view_instructorResult">
@@ -498,19 +431,17 @@
       <Column Name="PROF" Type="System.String" DbType="VarChar(106) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.view_subject" Method="view_subject">
-    <ElementType Name="view_subjectResult">
-      <Column Name="[Subject ID]" Member="Subject_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="[Subject Code]" Member="Subject_Code" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="[Subject Name]" Member="Subject_Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Units" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="[Subject Level]" Member="Subject_Level" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Course" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+  <Function Name="dbo.view_cor" Method="view_cor">
+    <Parameter Name="studid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="view_corResult">
+      <Column Name="Subject" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="[Subject Description]" Member="Subject_Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="[Unit/s]" Member="Unit_s" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Insructor" Type="System.String" DbType="VarChar(55)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.search_enrollees_view" Method="search_enrollees_view">
-    <Parameter Name="key" Type="System.String" DbType="VarChar(MAX)" />
-    <ElementType Name="search_enrollees_viewResult">
+  <Function Name="dbo.enrollees_view" Method="enrollees_view">
+    <ElementType Name="enrollees_viewResult">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="[Full Name]" Member="Full_Name" Type="System.String" DbType="VarChar(153)" CanBeNull="true" />
       <Column Name="[Year Level]" Member="Year_Level" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
@@ -519,6 +450,83 @@
       <Column Name="[Student Status]" Member="Student_Status" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="Status" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.duplicate_enrollee" Method="duplicate_enrollee">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="acadyear" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="sem" Type="System.String" DbType="VarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.duplicate_enrollee_pending" Method="duplicate_enrollee_pending">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.enroll_student" Method="enroll_student">
+    <Parameter Name="year" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="acadyear" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="sem" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="studstas" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="course_id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.enroll_stud_section" Method="enroll_stud_section">
+    <Parameter Name="enrollmentid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="yrlvl" Type="System.Int32" DbType="Int" />
+    <ElementType Name="enroll_stud_sectionResult">
+      <Column Name="section_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="section_course" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="section_yearlevel" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="section_name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.get_stud" Method="get_stud">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="get_studResult">
+      <Column Name="stud_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="stud_username" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="stud_password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="stud_fname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="stud_mname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="stud_lname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="stud_gender" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="stud_bd" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="stud_age" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="stud_address" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="stud_email" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="stud_tel" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="enrollment_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="enrollment_yearlevel" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="enrollment_schoolyear" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="enrollment_semester" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="enrollment_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="enrollment_studstatus" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="enrollment_status" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="stud_id1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="course_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="course_id1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="course_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="section_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="section_course" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="section_yearlevel" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="section_name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="course_id2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.delete_stud_status" Method="delete_stud_status">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.unenroll_student" Method="unenroll_student">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.enrolled_view" Method="enrolled_view">
+    <ElementType Name="enrolled_viewResult">
+      <Column Name="[Enroll ID]" Member="Enroll_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(153) NOT NULL" CanBeNull="false" />
+      <Column Name="Section" Type="System.String" DbType="VarChar(37) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
 </Database>

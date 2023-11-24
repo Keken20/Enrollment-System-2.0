@@ -30,7 +30,6 @@ namespace Enrollment_System_2._0
             foreach (var item in result)
             {
                 id = item.stud_id;
-                
             }
             var res = db.get_enrolled_info(id);
             foreach(var item in res)

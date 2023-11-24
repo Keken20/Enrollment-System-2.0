@@ -38,20 +38,7 @@ namespace Enrollment_System_2._0
             MessageBox.Show("Successfully Updated!", "Update", MessageBoxButtons.OK);
             DisplayData();
             studentdashboarddisplay.DisplayName();
-            //homePage();
         }
-
-        //public void homePage()
-        //{
-        //    studentdashboarddisplay.Controls.Clear();
-        //    StudentHomePage homepage = new StudentHomePage();
-        //    homepage.TopLevel = false;
-        //    homepage.Dock = DockStyle.Fill;
-        //    homepage.FormBorderStyle = FormBorderStyle.None;
-        //    studentdashboarddisplay.Controls.Add(homepage);
-        //    homepage.username = username;
-        //    homepage.Show();
-        //}
 
         static int GetAge(DateTime birth)
         {

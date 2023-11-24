@@ -200,6 +200,7 @@ namespace Enrollment_System_2._0
             this.ClientSize = new System.Drawing.Size(1234, 741);
             this.Controls.Add(this.mainpanel);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "AdminDashboad";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

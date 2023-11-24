@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Enrollment_System_2._0
@@ -13,6 +6,7 @@ namespace Enrollment_System_2._0
     public partial class AdminStudentPage : Form
     {
         EnrollmentDataContext db = new EnrollmentDataContext();
+
         public AdminStudentPage()
         {
             InitializeComponent();
@@ -28,6 +22,7 @@ namespace Enrollment_System_2._0
             action.UseColumnTextForButtonValue = true;
             dataGridView1.Columns.Add(action);
         }
+
         public void LoadData()
         {
             dataGridView1.DataSource = db.enrolled_view();
@@ -42,25 +37,32 @@ namespace Enrollment_System_2._0
         {
             try
             {
-                if (dataGridView1.Columns[e.ColumnIndex].Name == "deletebtn")
+                if (dataGridView1.CurrentRow.Index == dataGridView1.Rows.Count - 1)
                 {
-                    int studid = int.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString());
+                    MessageBox.Show("No records found!", "Message");
+                }
+                else if (dataGridView1.Columns[e.ColumnIndex].Name == "deletebtn")
+                {
+                    int enrollmentId = int.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString());
                     if (MessageBox.Show("Confirm?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        db.unenroll_student(studid);
-                        db.delete_stud_status(studid);
+                        deleteData(enrollmentId);
+
                         LoadData();
-                        MessageBox.Show("Student unerolled succesfully!", "Message");
+                        MessageBox.Show("Student unenrolled successfully!", "Message");
                     }
                 }
             }
             catch (Exception)
             {
-                MessageBox.Show("No records found", "Error");
+                MessageBox.Show("No records found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           
+        }
+
+        private void deleteData(int enrollmentId)
+        {
+            db.unenroll_student(enrollmentId);
+            db.delete_stud_status(enrollmentId);
         }
     }
-
 }
-

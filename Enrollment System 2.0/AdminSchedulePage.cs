@@ -27,7 +27,7 @@ namespace Enrollment_System_2._0
             var section = db.get_section_info(sectionid);
             foreach(var item in section)
             {
-                txtsection.Text = item.section_course+ " " + item.section_yearlevel + "-" + item.section_name;
+                txtsection.Text = item.section_course+ " " + item.section_yearlevel + " -" + item.section_name;
             }
             var subject = db.get_subject().ToList();
             this.subject.DataSource = subject;
@@ -104,6 +104,7 @@ namespace Enrollment_System_2._0
             if (dataGridView1.CurrentRow.Index == dataGridView1.Rows.Count - 1)
             {
                 MessageBox.Show("No records found!", "Message");
+                ClearData();
             }
             else
             {
@@ -137,6 +138,7 @@ namespace Enrollment_System_2._0
                     MessageBox.Show("Schedule removed sucessfully", "Message");
                     ClearData();
                 }
+                ClearData();
             }
             catch (Exception)
             {

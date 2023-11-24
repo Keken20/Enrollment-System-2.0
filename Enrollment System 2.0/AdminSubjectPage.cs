@@ -93,6 +93,7 @@ namespace Enrollment_System_2._0
                 if (dataGridView1.CurrentRow.Index == dataGridView1.Rows.Count - 1)
                 {
                     MessageBox.Show("No records found!", "Message");
+                    ClearData();
                 }
                 else
                 {
@@ -111,6 +112,7 @@ namespace Enrollment_System_2._0
                             MessageBox.Show("Subject deleted sucessfully", "Message");
                             ClearData();
                         }
+                        ClearData();
                     }
                 }
                
