@@ -20,7 +20,7 @@ namespace Enrollment_System_2._0
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (username.Text == "admin")
+            if (db.check_username(username.Text).Count() > 0)
             {
                 int user = db.check_username(username.Text).Count();
                 int pass = db.check_password(username.Text, password.Text).Count();
@@ -38,8 +38,11 @@ namespace Enrollment_System_2._0
                 }
                 else
                 {
-                    MessageBox.Show("Login Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ShowAdminDashboard();
+                    MessageBox.Show("Verify your account first before proceeding to Admin Page!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    FaceRecognationForm fr = new FaceRecognationForm();
+                    this.Hide();
+                    fr.user = username.Text;
+                    fr.Show();                                     
                 }
             }
             else
@@ -76,13 +79,7 @@ namespace Enrollment_System_2._0
                 return false;
             }
         }
-        private void ShowAdminDashboard()
-        {
-            string user_name = username.Text;
-            AdminDashboad f2 = new AdminDashboad();
-            f2.Show();
-            Visible = false;
-        }
+      
 
         private void ShowStudentDashboard()
         {
