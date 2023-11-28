@@ -30,6 +30,12 @@ namespace Enrollment_System_2._0
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void Insertadmin(admin instance);
+    partial void Updateadmin(admin instance);
+    partial void Deleteadmin(admin instance);
+    partial void Insertsubject_tbl(subject_tbl instance);
+    partial void Updatesubject_tbl(subject_tbl instance);
+    partial void Deletesubject_tbl(subject_tbl instance);
     partial void Insertcourse_tbl(course_tbl instance);
     partial void Updatecourse_tbl(course_tbl instance);
     partial void Deletecourse_tbl(course_tbl instance);
@@ -51,16 +57,10 @@ namespace Enrollment_System_2._0
     partial void Insertstud_account(stud_account instance);
     partial void Updatestud_account(stud_account instance);
     partial void Deletestud_account(stud_account instance);
-    partial void Insertsubject_tbl(subject_tbl instance);
-    partial void Updatesubject_tbl(subject_tbl instance);
-    partial void Deletesubject_tbl(subject_tbl instance);
-    partial void Insertadmin(admin instance);
-    partial void Updateadmin(admin instance);
-    partial void Deleteadmin(admin instance);
     #endregion
 		
 		public EnrollmentDataContext() : 
-				base(global::Enrollment_System_2._0.Properties.Settings.Default.enrollmentConnectionString, mappingSource)
+				base(global::Enrollment_System_2._0.Properties.Settings.Default.enrollmentConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -87,6 +87,22 @@ namespace Enrollment_System_2._0
 				base(connection, mappingSource)
 		{
 			OnCreated();
+		}
+		
+		public System.Data.Linq.Table<admin> admins
+		{
+			get
+			{
+				return this.GetTable<admin>();
+			}
+		}
+		
+		public System.Data.Linq.Table<subject_tbl> subject_tbls
+		{
+			get
+			{
+				return this.GetTable<subject_tbl>();
+			}
 		}
 		
 		public System.Data.Linq.Table<course_tbl> course_tbls
@@ -145,27 +161,18 @@ namespace Enrollment_System_2._0
 			}
 		}
 		
-		public System.Data.Linq.Table<subject_tbl> subject_tbls
-		{
-			get
-			{
-				return this.GetTable<subject_tbl>();
-			}
-		}
-		
-		public System.Data.Linq.Table<admin> admins
-		{
-			get
-			{
-				return this.GetTable<admin>();
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.accept_enrollment")]
 		public int accept_enrollment([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> enrollmentid, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> studid, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> sectionid)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), enrollmentid, studid, sectionid);
 			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.view_subject")]
+		public ISingleResult<view_subjectResult> view_subject()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<view_subjectResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.add_instructor")]
@@ -194,6 +201,13 @@ namespace Enrollment_System_2._0
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), subcode, subname, subunit, subyearlevel, courseid);
 			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.admin_info")]
+		public ISingleResult<admin_infoResult> admin_info([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string user)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), user);
+			return ((ISingleResult<admin_infoResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.check_password")]
@@ -504,25 +518,496 @@ namespace Enrollment_System_2._0
 			return ((ISingleResult<view_student_corResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.view_subject")]
-		public ISingleResult<view_subjectResult> view_subject()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<view_subjectResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.update_facerecog")]
-		public int update_facerecog([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string name)
+		public int update_facerecog([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string name)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), name);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, name);
 			return ((int)(result.ReturnValue));
 		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.admin")]
+	public partial class admin : INotifyPropertyChanging, INotifyPropertyChanged
+	{
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.admin_info")]
-		public ISingleResult<admin_infoResult> admin_info([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string user)
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _admin_id;
+		
+		private string _username;
+		
+		private string _pass;
+		
+		private string _admin_fname;
+		
+		private string _admin_mname;
+		
+		private string _admin_lname;
+		
+		private string _admin_facename;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onadmin_idChanging(int value);
+    partial void Onadmin_idChanged();
+    partial void OnusernameChanging(string value);
+    partial void OnusernameChanged();
+    partial void OnpassChanging(string value);
+    partial void OnpassChanged();
+    partial void Onadmin_fnameChanging(string value);
+    partial void Onadmin_fnameChanged();
+    partial void Onadmin_mnameChanging(string value);
+    partial void Onadmin_mnameChanged();
+    partial void Onadmin_lnameChanging(string value);
+    partial void Onadmin_lnameChanged();
+    partial void Onadmin_facenameChanging(string value);
+    partial void Onadmin_facenameChanged();
+    #endregion
+		
+		public admin()
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), user);
-			return ((ISingleResult<admin_infoResult>)(result.ReturnValue));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_admin_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int admin_id
+		{
+			get
+			{
+				return this._admin_id;
+			}
+			set
+			{
+				if ((this._admin_id != value))
+				{
+					this.Onadmin_idChanging(value);
+					this.SendPropertyChanging();
+					this._admin_id = value;
+					this.SendPropertyChanged("admin_id");
+					this.Onadmin_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_username", DbType="VarChar(50)")]
+		public string username
+		{
+			get
+			{
+				return this._username;
+			}
+			set
+			{
+				if ((this._username != value))
+				{
+					this.OnusernameChanging(value);
+					this.SendPropertyChanging();
+					this._username = value;
+					this.SendPropertyChanged("username");
+					this.OnusernameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pass", DbType="VarChar(50)")]
+		public string pass
+		{
+			get
+			{
+				return this._pass;
+			}
+			set
+			{
+				if ((this._pass != value))
+				{
+					this.OnpassChanging(value);
+					this.SendPropertyChanging();
+					this._pass = value;
+					this.SendPropertyChanged("pass");
+					this.OnpassChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_admin_fname", DbType="VarChar(50)")]
+		public string admin_fname
+		{
+			get
+			{
+				return this._admin_fname;
+			}
+			set
+			{
+				if ((this._admin_fname != value))
+				{
+					this.Onadmin_fnameChanging(value);
+					this.SendPropertyChanging();
+					this._admin_fname = value;
+					this.SendPropertyChanged("admin_fname");
+					this.Onadmin_fnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_admin_mname", DbType="VarChar(50)")]
+		public string admin_mname
+		{
+			get
+			{
+				return this._admin_mname;
+			}
+			set
+			{
+				if ((this._admin_mname != value))
+				{
+					this.Onadmin_mnameChanging(value);
+					this.SendPropertyChanging();
+					this._admin_mname = value;
+					this.SendPropertyChanged("admin_mname");
+					this.Onadmin_mnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_admin_lname", DbType="VarChar(50)")]
+		public string admin_lname
+		{
+			get
+			{
+				return this._admin_lname;
+			}
+			set
+			{
+				if ((this._admin_lname != value))
+				{
+					this.Onadmin_lnameChanging(value);
+					this.SendPropertyChanging();
+					this._admin_lname = value;
+					this.SendPropertyChanged("admin_lname");
+					this.Onadmin_lnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_admin_facename", DbType="VarChar(50)")]
+		public string admin_facename
+		{
+			get
+			{
+				return this._admin_facename;
+			}
+			set
+			{
+				if ((this._admin_facename != value))
+				{
+					this.Onadmin_facenameChanging(value);
+					this.SendPropertyChanging();
+					this._admin_facename = value;
+					this.SendPropertyChanged("admin_facename");
+					this.Onadmin_facenameChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.subject_tbl")]
+	public partial class subject_tbl : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _subject_id;
+		
+		private string _subject_code;
+		
+		private string _subject_name;
+		
+		private System.Nullable<int> _subject_unit;
+		
+		private System.Nullable<int> _subject_yearlevel;
+		
+		private System.Nullable<int> _course_id;
+		
+		private EntitySet<ins_tbl> _ins_tbls;
+		
+		private EntitySet<sched_tbl> _sched_tbls;
+		
+		private EntityRef<course_tbl> _course_tbl;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onsubject_idChanging(int value);
+    partial void Onsubject_idChanged();
+    partial void Onsubject_codeChanging(string value);
+    partial void Onsubject_codeChanged();
+    partial void Onsubject_nameChanging(string value);
+    partial void Onsubject_nameChanged();
+    partial void Onsubject_unitChanging(System.Nullable<int> value);
+    partial void Onsubject_unitChanged();
+    partial void Onsubject_yearlevelChanging(System.Nullable<int> value);
+    partial void Onsubject_yearlevelChanged();
+    partial void Oncourse_idChanging(System.Nullable<int> value);
+    partial void Oncourse_idChanged();
+    #endregion
+		
+		public subject_tbl()
+		{
+			this._ins_tbls = new EntitySet<ins_tbl>(new Action<ins_tbl>(this.attach_ins_tbls), new Action<ins_tbl>(this.detach_ins_tbls));
+			this._sched_tbls = new EntitySet<sched_tbl>(new Action<sched_tbl>(this.attach_sched_tbls), new Action<sched_tbl>(this.detach_sched_tbls));
+			this._course_tbl = default(EntityRef<course_tbl>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_subject_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int subject_id
+		{
+			get
+			{
+				return this._subject_id;
+			}
+			set
+			{
+				if ((this._subject_id != value))
+				{
+					this.Onsubject_idChanging(value);
+					this.SendPropertyChanging();
+					this._subject_id = value;
+					this.SendPropertyChanged("subject_id");
+					this.Onsubject_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_subject_code", DbType="VarChar(10)")]
+		public string subject_code
+		{
+			get
+			{
+				return this._subject_code;
+			}
+			set
+			{
+				if ((this._subject_code != value))
+				{
+					this.Onsubject_codeChanging(value);
+					this.SendPropertyChanging();
+					this._subject_code = value;
+					this.SendPropertyChanged("subject_code");
+					this.Onsubject_codeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_subject_name", DbType="VarChar(50)")]
+		public string subject_name
+		{
+			get
+			{
+				return this._subject_name;
+			}
+			set
+			{
+				if ((this._subject_name != value))
+				{
+					this.Onsubject_nameChanging(value);
+					this.SendPropertyChanging();
+					this._subject_name = value;
+					this.SendPropertyChanged("subject_name");
+					this.Onsubject_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_subject_unit", DbType="Int")]
+		public System.Nullable<int> subject_unit
+		{
+			get
+			{
+				return this._subject_unit;
+			}
+			set
+			{
+				if ((this._subject_unit != value))
+				{
+					this.Onsubject_unitChanging(value);
+					this.SendPropertyChanging();
+					this._subject_unit = value;
+					this.SendPropertyChanged("subject_unit");
+					this.Onsubject_unitChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_subject_yearlevel", DbType="Int")]
+		public System.Nullable<int> subject_yearlevel
+		{
+			get
+			{
+				return this._subject_yearlevel;
+			}
+			set
+			{
+				if ((this._subject_yearlevel != value))
+				{
+					this.Onsubject_yearlevelChanging(value);
+					this.SendPropertyChanging();
+					this._subject_yearlevel = value;
+					this.SendPropertyChanged("subject_yearlevel");
+					this.Onsubject_yearlevelChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_course_id", DbType="Int")]
+		public System.Nullable<int> course_id
+		{
+			get
+			{
+				return this._course_id;
+			}
+			set
+			{
+				if ((this._course_id != value))
+				{
+					if (this._course_tbl.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Oncourse_idChanging(value);
+					this.SendPropertyChanging();
+					this._course_id = value;
+					this.SendPropertyChanged("course_id");
+					this.Oncourse_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="subject_tbl_ins_tbl", Storage="_ins_tbls", ThisKey="subject_id", OtherKey="subject_id")]
+		public EntitySet<ins_tbl> ins_tbls
+		{
+			get
+			{
+				return this._ins_tbls;
+			}
+			set
+			{
+				this._ins_tbls.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="subject_tbl_sched_tbl", Storage="_sched_tbls", ThisKey="subject_id", OtherKey="subject_id")]
+		public EntitySet<sched_tbl> sched_tbls
+		{
+			get
+			{
+				return this._sched_tbls;
+			}
+			set
+			{
+				this._sched_tbls.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="course_tbl_subject_tbl", Storage="_course_tbl", ThisKey="course_id", OtherKey="course_id", IsForeignKey=true)]
+		public course_tbl course_tbl
+		{
+			get
+			{
+				return this._course_tbl.Entity;
+			}
+			set
+			{
+				course_tbl previousValue = this._course_tbl.Entity;
+				if (((previousValue != value) 
+							|| (this._course_tbl.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._course_tbl.Entity = null;
+						previousValue.subject_tbls.Remove(this);
+					}
+					this._course_tbl.Entity = value;
+					if ((value != null))
+					{
+						value.subject_tbls.Add(this);
+						this._course_id = value.course_id;
+					}
+					else
+					{
+						this._course_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("course_tbl");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_ins_tbls(ins_tbl entity)
+		{
+			this.SendPropertyChanging();
+			entity.subject_tbl = this;
+		}
+		
+		private void detach_ins_tbls(ins_tbl entity)
+		{
+			this.SendPropertyChanging();
+			entity.subject_tbl = null;
+		}
+		
+		private void attach_sched_tbls(sched_tbl entity)
+		{
+			this.SendPropertyChanging();
+			entity.subject_tbl = this;
+		}
+		
+		private void detach_sched_tbls(sched_tbl entity)
+		{
+			this.SendPropertyChanging();
+			entity.subject_tbl = null;
 		}
 	}
 	
@@ -536,11 +1021,11 @@ namespace Enrollment_System_2._0
 		
 		private string _course_name;
 		
+		private EntitySet<subject_tbl> _subject_tbls;
+		
 		private EntitySet<enrollment_tbl> _enrollment_tbls;
 		
 		private EntitySet<section_tbl> _section_tbls;
-		
-		private EntitySet<subject_tbl> _subject_tbls;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -554,9 +1039,9 @@ namespace Enrollment_System_2._0
 		
 		public course_tbl()
 		{
+			this._subject_tbls = new EntitySet<subject_tbl>(new Action<subject_tbl>(this.attach_subject_tbls), new Action<subject_tbl>(this.detach_subject_tbls));
 			this._enrollment_tbls = new EntitySet<enrollment_tbl>(new Action<enrollment_tbl>(this.attach_enrollment_tbls), new Action<enrollment_tbl>(this.detach_enrollment_tbls));
 			this._section_tbls = new EntitySet<section_tbl>(new Action<section_tbl>(this.attach_section_tbls), new Action<section_tbl>(this.detach_section_tbls));
-			this._subject_tbls = new EntitySet<subject_tbl>(new Action<subject_tbl>(this.attach_subject_tbls), new Action<subject_tbl>(this.detach_subject_tbls));
 			OnCreated();
 		}
 		
@@ -600,6 +1085,19 @@ namespace Enrollment_System_2._0
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="course_tbl_subject_tbl", Storage="_subject_tbls", ThisKey="course_id", OtherKey="course_id")]
+		public EntitySet<subject_tbl> subject_tbls
+		{
+			get
+			{
+				return this._subject_tbls;
+			}
+			set
+			{
+				this._subject_tbls.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="course_tbl_enrollment_tbl", Storage="_enrollment_tbls", ThisKey="course_id", OtherKey="course_id")]
 		public EntitySet<enrollment_tbl> enrollment_tbls
 		{
@@ -626,19 +1124,6 @@ namespace Enrollment_System_2._0
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="course_tbl_subject_tbl", Storage="_subject_tbls", ThisKey="course_id", OtherKey="course_id")]
-		public EntitySet<subject_tbl> subject_tbls
-		{
-			get
-			{
-				return this._subject_tbls;
-			}
-			set
-			{
-				this._subject_tbls.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -657,6 +1142,18 @@ namespace Enrollment_System_2._0
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_subject_tbls(subject_tbl entity)
+		{
+			this.SendPropertyChanging();
+			entity.course_tbl = this;
+		}
+		
+		private void detach_subject_tbls(subject_tbl entity)
+		{
+			this.SendPropertyChanging();
+			entity.course_tbl = null;
 		}
 		
 		private void attach_enrollment_tbls(enrollment_tbl entity)
@@ -678,18 +1175,6 @@ namespace Enrollment_System_2._0
 		}
 		
 		private void detach_section_tbls(section_tbl entity)
-		{
-			this.SendPropertyChanging();
-			entity.course_tbl = null;
-		}
-		
-		private void attach_subject_tbls(subject_tbl entity)
-		{
-			this.SendPropertyChanging();
-			entity.course_tbl = this;
-		}
-		
-		private void detach_subject_tbls(subject_tbl entity)
 		{
 			this.SendPropertyChanging();
 			entity.course_tbl = null;
@@ -1514,9 +1999,9 @@ namespace Enrollment_System_2._0
 		
 		private System.Nullable<int> _subject_id;
 		
-		private EntityRef<section_tbl> _section_tbl;
-		
 		private EntityRef<subject_tbl> _subject_tbl;
+		
+		private EntityRef<section_tbl> _section_tbl;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1542,8 +2027,8 @@ namespace Enrollment_System_2._0
 		
 		public sched_tbl()
 		{
-			this._section_tbl = default(EntityRef<section_tbl>);
 			this._subject_tbl = default(EntityRef<subject_tbl>);
+			this._section_tbl = default(EntityRef<section_tbl>);
 			OnCreated();
 		}
 		
@@ -1715,40 +2200,6 @@ namespace Enrollment_System_2._0
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="section_tbl_sched_tbl", Storage="_section_tbl", ThisKey="section_id", OtherKey="section_id", IsForeignKey=true, DeleteRule="CASCADE")]
-		public section_tbl section_tbl
-		{
-			get
-			{
-				return this._section_tbl.Entity;
-			}
-			set
-			{
-				section_tbl previousValue = this._section_tbl.Entity;
-				if (((previousValue != value) 
-							|| (this._section_tbl.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._section_tbl.Entity = null;
-						previousValue.sched_tbls.Remove(this);
-					}
-					this._section_tbl.Entity = value;
-					if ((value != null))
-					{
-						value.sched_tbls.Add(this);
-						this._section_id = value.section_id;
-					}
-					else
-					{
-						this._section_id = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("section_tbl");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="subject_tbl_sched_tbl", Storage="_subject_tbl", ThisKey="subject_id", OtherKey="subject_id", IsForeignKey=true)]
 		public subject_tbl subject_tbl
 		{
@@ -1779,6 +2230,40 @@ namespace Enrollment_System_2._0
 						this._subject_id = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("subject_tbl");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="section_tbl_sched_tbl", Storage="_section_tbl", ThisKey="section_id", OtherKey="section_id", IsForeignKey=true, DeleteRule="CASCADE")]
+		public section_tbl section_tbl
+		{
+			get
+			{
+				return this._section_tbl.Entity;
+			}
+			set
+			{
+				section_tbl previousValue = this._section_tbl.Entity;
+				if (((previousValue != value) 
+							|| (this._section_tbl.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._section_tbl.Entity = null;
+						previousValue.sched_tbls.Remove(this);
+					}
+					this._section_tbl.Entity = value;
+					if ((value != null))
+					{
+						value.sched_tbls.Add(this);
+						this._section_id = value.section_id;
+					}
+					else
+					{
+						this._section_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("section_tbl");
 				}
 			}
 		}
@@ -2441,290 +2926,124 @@ namespace Enrollment_System_2._0
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.subject_tbl")]
-	public partial class subject_tbl : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class view_subjectResult
 	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		private int _Subject_ID;
 		
-		private int _subject_id;
+		private string _Subject_Code;
 		
-		private string _subject_code;
+		private string _Subject_Name;
 		
-		private string _subject_name;
+		private System.Nullable<int> _Units;
 		
-		private System.Nullable<int> _subject_unit;
+		private System.Nullable<int> _Subject_Level;
 		
-		private System.Nullable<int> _subject_yearlevel;
+		private string _Course;
 		
-		private System.Nullable<int> _course_id;
-		
-		private EntitySet<ins_tbl> _ins_tbls;
-		
-		private EntitySet<sched_tbl> _sched_tbls;
-		
-		private EntityRef<course_tbl> _course_tbl;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onsubject_idChanging(int value);
-    partial void Onsubject_idChanged();
-    partial void Onsubject_codeChanging(string value);
-    partial void Onsubject_codeChanged();
-    partial void Onsubject_nameChanging(string value);
-    partial void Onsubject_nameChanged();
-    partial void Onsubject_unitChanging(System.Nullable<int> value);
-    partial void Onsubject_unitChanged();
-    partial void Onsubject_yearlevelChanging(System.Nullable<int> value);
-    partial void Onsubject_yearlevelChanged();
-    partial void Oncourse_idChanging(System.Nullable<int> value);
-    partial void Oncourse_idChanged();
-    #endregion
-		
-		public subject_tbl()
+		public view_subjectResult()
 		{
-			this._ins_tbls = new EntitySet<ins_tbl>(new Action<ins_tbl>(this.attach_ins_tbls), new Action<ins_tbl>(this.detach_ins_tbls));
-			this._sched_tbls = new EntitySet<sched_tbl>(new Action<sched_tbl>(this.attach_sched_tbls), new Action<sched_tbl>(this.detach_sched_tbls));
-			this._course_tbl = default(EntityRef<course_tbl>);
-			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_subject_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int subject_id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Subject ID]", Storage="_Subject_ID", DbType="Int NOT NULL")]
+		public int Subject_ID
 		{
 			get
 			{
-				return this._subject_id;
+				return this._Subject_ID;
 			}
 			set
 			{
-				if ((this._subject_id != value))
+				if ((this._Subject_ID != value))
 				{
-					this.Onsubject_idChanging(value);
-					this.SendPropertyChanging();
-					this._subject_id = value;
-					this.SendPropertyChanged("subject_id");
-					this.Onsubject_idChanged();
+					this._Subject_ID = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_subject_code", DbType="VarChar(10)")]
-		public string subject_code
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Subject Code]", Storage="_Subject_Code", DbType="VarChar(10)")]
+		public string Subject_Code
 		{
 			get
 			{
-				return this._subject_code;
+				return this._Subject_Code;
 			}
 			set
 			{
-				if ((this._subject_code != value))
+				if ((this._Subject_Code != value))
 				{
-					this.Onsubject_codeChanging(value);
-					this.SendPropertyChanging();
-					this._subject_code = value;
-					this.SendPropertyChanged("subject_code");
-					this.Onsubject_codeChanged();
+					this._Subject_Code = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_subject_name", DbType="VarChar(50)")]
-		public string subject_name
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Subject Name]", Storage="_Subject_Name", DbType="VarChar(50)")]
+		public string Subject_Name
 		{
 			get
 			{
-				return this._subject_name;
+				return this._Subject_Name;
 			}
 			set
 			{
-				if ((this._subject_name != value))
+				if ((this._Subject_Name != value))
 				{
-					this.Onsubject_nameChanging(value);
-					this.SendPropertyChanging();
-					this._subject_name = value;
-					this.SendPropertyChanged("subject_name");
-					this.Onsubject_nameChanged();
+					this._Subject_Name = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_subject_unit", DbType="Int")]
-		public System.Nullable<int> subject_unit
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Units", DbType="Int")]
+		public System.Nullable<int> Units
 		{
 			get
 			{
-				return this._subject_unit;
+				return this._Units;
 			}
 			set
 			{
-				if ((this._subject_unit != value))
+				if ((this._Units != value))
 				{
-					this.Onsubject_unitChanging(value);
-					this.SendPropertyChanging();
-					this._subject_unit = value;
-					this.SendPropertyChanged("subject_unit");
-					this.Onsubject_unitChanged();
+					this._Units = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_subject_yearlevel", DbType="Int")]
-		public System.Nullable<int> subject_yearlevel
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Subject Level]", Storage="_Subject_Level", DbType="Int")]
+		public System.Nullable<int> Subject_Level
 		{
 			get
 			{
-				return this._subject_yearlevel;
+				return this._Subject_Level;
 			}
 			set
 			{
-				if ((this._subject_yearlevel != value))
+				if ((this._Subject_Level != value))
 				{
-					this.Onsubject_yearlevelChanging(value);
-					this.SendPropertyChanging();
-					this._subject_yearlevel = value;
-					this.SendPropertyChanged("subject_yearlevel");
-					this.Onsubject_yearlevelChanged();
+					this._Subject_Level = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_course_id", DbType="Int")]
-		public System.Nullable<int> course_id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Course", DbType="VarChar(50)")]
+		public string Course
 		{
 			get
 			{
-				return this._course_id;
+				return this._Course;
 			}
 			set
 			{
-				if ((this._course_id != value))
+				if ((this._Course != value))
 				{
-					if (this._course_tbl.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Oncourse_idChanging(value);
-					this.SendPropertyChanging();
-					this._course_id = value;
-					this.SendPropertyChanged("course_id");
-					this.Oncourse_idChanged();
+					this._Course = value;
 				}
 			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="subject_tbl_ins_tbl", Storage="_ins_tbls", ThisKey="subject_id", OtherKey="subject_id")]
-		public EntitySet<ins_tbl> ins_tbls
-		{
-			get
-			{
-				return this._ins_tbls;
-			}
-			set
-			{
-				this._ins_tbls.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="subject_tbl_sched_tbl", Storage="_sched_tbls", ThisKey="subject_id", OtherKey="subject_id")]
-		public EntitySet<sched_tbl> sched_tbls
-		{
-			get
-			{
-				return this._sched_tbls;
-			}
-			set
-			{
-				this._sched_tbls.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="course_tbl_subject_tbl", Storage="_course_tbl", ThisKey="course_id", OtherKey="course_id", IsForeignKey=true)]
-		public course_tbl course_tbl
-		{
-			get
-			{
-				return this._course_tbl.Entity;
-			}
-			set
-			{
-				course_tbl previousValue = this._course_tbl.Entity;
-				if (((previousValue != value) 
-							|| (this._course_tbl.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._course_tbl.Entity = null;
-						previousValue.subject_tbls.Remove(this);
-					}
-					this._course_tbl.Entity = value;
-					if ((value != null))
-					{
-						value.subject_tbls.Add(this);
-						this._course_id = value.course_id;
-					}
-					else
-					{
-						this._course_id = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("course_tbl");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_ins_tbls(ins_tbl entity)
-		{
-			this.SendPropertyChanging();
-			entity.subject_tbl = this;
-		}
-		
-		private void detach_ins_tbls(ins_tbl entity)
-		{
-			this.SendPropertyChanging();
-			entity.subject_tbl = null;
-		}
-		
-		private void attach_sched_tbls(sched_tbl entity)
-		{
-			this.SendPropertyChanging();
-			entity.subject_tbl = this;
-		}
-		
-		private void detach_sched_tbls(sched_tbl entity)
-		{
-			this.SendPropertyChanging();
-			entity.subject_tbl = null;
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.admin")]
-	public partial class admin : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class admin_infoResult
 	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _admin_id;
 		
@@ -2740,32 +3059,11 @@ namespace Enrollment_System_2._0
 		
 		private string _admin_facename;
 		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onadmin_idChanging(int value);
-    partial void Onadmin_idChanged();
-    partial void OnusernameChanging(string value);
-    partial void OnusernameChanged();
-    partial void OnpassChanging(string value);
-    partial void OnpassChanged();
-    partial void Onadmin_fnameChanging(string value);
-    partial void Onadmin_fnameChanged();
-    partial void Onadmin_mnameChanging(string value);
-    partial void Onadmin_mnameChanged();
-    partial void Onadmin_lnameChanging(string value);
-    partial void Onadmin_lnameChanged();
-    partial void Onadmin_facenameChanging(string value);
-    partial void Onadmin_facenameChanged();
-    #endregion
-		
-		public admin()
+		public admin_infoResult()
 		{
-			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_admin_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_admin_id", DbType="Int NOT NULL")]
 		public int admin_id
 		{
 			get
@@ -2776,11 +3074,7 @@ namespace Enrollment_System_2._0
 			{
 				if ((this._admin_id != value))
 				{
-					this.Onadmin_idChanging(value);
-					this.SendPropertyChanging();
 					this._admin_id = value;
-					this.SendPropertyChanged("admin_id");
-					this.Onadmin_idChanged();
 				}
 			}
 		}
@@ -2796,11 +3090,7 @@ namespace Enrollment_System_2._0
 			{
 				if ((this._username != value))
 				{
-					this.OnusernameChanging(value);
-					this.SendPropertyChanging();
 					this._username = value;
-					this.SendPropertyChanged("username");
-					this.OnusernameChanged();
 				}
 			}
 		}
@@ -2816,11 +3106,7 @@ namespace Enrollment_System_2._0
 			{
 				if ((this._pass != value))
 				{
-					this.OnpassChanging(value);
-					this.SendPropertyChanging();
 					this._pass = value;
-					this.SendPropertyChanged("pass");
-					this.OnpassChanged();
 				}
 			}
 		}
@@ -2836,11 +3122,7 @@ namespace Enrollment_System_2._0
 			{
 				if ((this._admin_fname != value))
 				{
-					this.Onadmin_fnameChanging(value);
-					this.SendPropertyChanging();
 					this._admin_fname = value;
-					this.SendPropertyChanged("admin_fname");
-					this.Onadmin_fnameChanged();
 				}
 			}
 		}
@@ -2856,11 +3138,7 @@ namespace Enrollment_System_2._0
 			{
 				if ((this._admin_mname != value))
 				{
-					this.Onadmin_mnameChanging(value);
-					this.SendPropertyChanging();
 					this._admin_mname = value;
-					this.SendPropertyChanged("admin_mname");
-					this.Onadmin_mnameChanged();
 				}
 			}
 		}
@@ -2876,11 +3154,7 @@ namespace Enrollment_System_2._0
 			{
 				if ((this._admin_lname != value))
 				{
-					this.Onadmin_lnameChanging(value);
-					this.SendPropertyChanging();
 					this._admin_lname = value;
-					this.SendPropertyChanged("admin_lname");
-					this.Onadmin_lnameChanged();
 				}
 			}
 		}
@@ -2896,32 +3170,8 @@ namespace Enrollment_System_2._0
 			{
 				if ((this._admin_facename != value))
 				{
-					this.Onadmin_facenameChanging(value);
-					this.SendPropertyChanging();
 					this._admin_facename = value;
-					this.SendPropertyChanged("admin_facename");
-					this.Onadmin_facenameChanged();
 				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -5477,256 +5727,6 @@ namespace Enrollment_System_2._0
 				if ((this._PROF != value))
 				{
 					this._PROF = value;
-				}
-			}
-		}
-	}
-	
-	public partial class view_subjectResult
-	{
-		
-		private int _Subject_ID;
-		
-		private string _Subject_Code;
-		
-		private string _Subject_Name;
-		
-		private System.Nullable<int> _Units;
-		
-		private System.Nullable<int> _Subject_Level;
-		
-		private string _Course;
-		
-		public view_subjectResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Subject ID]", Storage="_Subject_ID", DbType="Int NOT NULL")]
-		public int Subject_ID
-		{
-			get
-			{
-				return this._Subject_ID;
-			}
-			set
-			{
-				if ((this._Subject_ID != value))
-				{
-					this._Subject_ID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Subject Code]", Storage="_Subject_Code", DbType="VarChar(10)")]
-		public string Subject_Code
-		{
-			get
-			{
-				return this._Subject_Code;
-			}
-			set
-			{
-				if ((this._Subject_Code != value))
-				{
-					this._Subject_Code = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Subject Name]", Storage="_Subject_Name", DbType="VarChar(50)")]
-		public string Subject_Name
-		{
-			get
-			{
-				return this._Subject_Name;
-			}
-			set
-			{
-				if ((this._Subject_Name != value))
-				{
-					this._Subject_Name = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Units", DbType="Int")]
-		public System.Nullable<int> Units
-		{
-			get
-			{
-				return this._Units;
-			}
-			set
-			{
-				if ((this._Units != value))
-				{
-					this._Units = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Subject Level]", Storage="_Subject_Level", DbType="Int")]
-		public System.Nullable<int> Subject_Level
-		{
-			get
-			{
-				return this._Subject_Level;
-			}
-			set
-			{
-				if ((this._Subject_Level != value))
-				{
-					this._Subject_Level = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Course", DbType="VarChar(50)")]
-		public string Course
-		{
-			get
-			{
-				return this._Course;
-			}
-			set
-			{
-				if ((this._Course != value))
-				{
-					this._Course = value;
-				}
-			}
-		}
-	}
-	
-	public partial class admin_infoResult
-	{
-		
-		private int _admin_id;
-		
-		private string _username;
-		
-		private string _pass;
-		
-		private string _admin_fname;
-		
-		private string _admin_mname;
-		
-		private string _admin_lname;
-		
-		private string _admin_facename;
-		
-		public admin_infoResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_admin_id", DbType="Int NOT NULL")]
-		public int admin_id
-		{
-			get
-			{
-				return this._admin_id;
-			}
-			set
-			{
-				if ((this._admin_id != value))
-				{
-					this._admin_id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_username", DbType="VarChar(50)")]
-		public string username
-		{
-			get
-			{
-				return this._username;
-			}
-			set
-			{
-				if ((this._username != value))
-				{
-					this._username = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pass", DbType="VarChar(50)")]
-		public string pass
-		{
-			get
-			{
-				return this._pass;
-			}
-			set
-			{
-				if ((this._pass != value))
-				{
-					this._pass = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_admin_fname", DbType="VarChar(50)")]
-		public string admin_fname
-		{
-			get
-			{
-				return this._admin_fname;
-			}
-			set
-			{
-				if ((this._admin_fname != value))
-				{
-					this._admin_fname = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_admin_mname", DbType="VarChar(50)")]
-		public string admin_mname
-		{
-			get
-			{
-				return this._admin_mname;
-			}
-			set
-			{
-				if ((this._admin_mname != value))
-				{
-					this._admin_mname = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_admin_lname", DbType="VarChar(50)")]
-		public string admin_lname
-		{
-			get
-			{
-				return this._admin_lname;
-			}
-			set
-			{
-				if ((this._admin_lname != value))
-				{
-					this._admin_lname = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_admin_facename", DbType="VarChar(50)")]
-		public string admin_facename
-		{
-			get
-			{
-				return this._admin_facename;
-			}
-			set
-			{
-				if ((this._admin_facename != value))
-				{
-					this._admin_facename = value;
 				}
 			}
 		}
