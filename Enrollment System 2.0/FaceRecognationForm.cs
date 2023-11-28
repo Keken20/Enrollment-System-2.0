@@ -24,6 +24,8 @@ namespace Enrollment_System_2._0
         string fname;
         string lname;
         string full;
+        int id;
+
         private void FaceRecognationForm_Load(object sender, EventArgs e)
         {
             fc.openCamera(pbOpenCamera, pbOpenCamera);
@@ -39,7 +41,7 @@ namespace Enrollment_System_2._0
                 fname = item.admin_fname;
                 lname = item.admin_lname;
                 full = fname + " " + lname;
-
+                id = item.admin_id;
             }
 
             if(fr == null)
@@ -59,11 +61,12 @@ namespace Enrollment_System_2._0
         private void btnCaptureImage_Click(object sender, EventArgs e)
         {
             string imagename = fname + " " + lname;
-            db.update_facerecog(imagename);
+            db.update_facerecog(id, imagename);
             fc.Save_IMAGE(imagename);
             fc.isTrained = true;
             MessageBox.Show("Succesfully Save", "Message");
             btnLogin.Visible = true;
+            Fullname.Text = fname + " " + lname;
         }
         private void ShowAdminDashboard()
         {
