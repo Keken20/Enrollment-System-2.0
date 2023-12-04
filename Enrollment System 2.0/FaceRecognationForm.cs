@@ -45,7 +45,7 @@ namespace Enrollment_System_2._0
             }
 
             if(fr == null)
-            {
+            {             
                 MessageBox.Show("Insert your image first!!", "Message");              
                 btnCaptureImage.Visible = true;
                 btnLogin.Visible = false;
@@ -83,8 +83,7 @@ namespace Enrollment_System_2._0
             }
             else
             {
-                MessageBox.Show("Error!", "Message");
-
+                MessageBox.Show("Error!","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
            
         }

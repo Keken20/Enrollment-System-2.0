@@ -12,7 +12,7 @@ namespace Enrollment_System_2._0
 {
     public partial class EnrollStudent : Form
     {
-        private readonly AdminEnrolleesPage adminEnrolleesDisplay;  
+        private readonly AdminEnrolleesPage adminEnrolleesDisplay;
         EnrollmentDataContext db = new EnrollmentDataContext();
         public int studentid{ get; set; }
         int enrollmentid;

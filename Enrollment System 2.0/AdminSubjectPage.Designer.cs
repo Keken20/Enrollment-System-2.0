@@ -204,7 +204,7 @@ namespace Enrollment_System_2._0
             this.update.FlatAppearance.BorderSize = 0;
             this.update.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.update.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.update.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.update.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.update.Location = new System.Drawing.Point(149, 337);
             this.update.Name = "update";
             this.update.Size = new System.Drawing.Size(73, 37);

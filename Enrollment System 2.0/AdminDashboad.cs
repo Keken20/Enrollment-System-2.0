@@ -18,6 +18,7 @@ namespace Enrollment_System_2._0
         }
         private void AdminDashboad_Load(object sender, EventArgs e)
         {
+            timer1.Start();
             AdminHomePage homepage = new AdminHomePage();
             homepage.TopLevel = false;
             homepage.Dock = DockStyle.Fill;
@@ -101,6 +102,10 @@ namespace Enrollment_System_2._0
             mainpanel.Controls.Add(sp);
             sp.Show();
         }
-        
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            time.Text = DateTime.Now.ToString();
+        }
     }
 }

@@ -132,10 +132,11 @@ namespace Enrollment_System_2._0
             this.enroll_status.AutoSize = true;
             this.enroll_status.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.enroll_status.ForeColor = System.Drawing.Color.SteelBlue;
-            this.enroll_status.Location = new System.Drawing.Point(100, 89);
+            this.enroll_status.Location = new System.Drawing.Point(114, 88);
             this.enroll_status.Name = "enroll_status";
             this.enroll_status.Size = new System.Drawing.Size(0, 20);
             this.enroll_status.TabIndex = 12;
+            this.enroll_status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
             // 

@@ -32,7 +32,7 @@ namespace Enrollment_System_2._0
         {
             if (IsEmpty())
             {
-                MessageBox.Show("Fill all needed information");
+                MessageBox.Show("Fill all needed information","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -40,18 +40,18 @@ namespace Enrollment_System_2._0
 
                 if (db.duplicate_enrollee(id, acadyear.Text, sem.Text) > 0 )
                 {
-                    MessageBox.Show("Enrollee already exists. Submission failed.");
+                    MessageBox.Show("Enrollee already exists. Submission failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else if (db.duplicate_enrollee_pending(id) > 0)
                 {
-                    MessageBox.Show("Enrollee already exists. Submission failed.");
+                    MessageBox.Show("Enrollee already exists. Submission failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
                     id = GetID(username.ToString());
                     cre = course.Text;
                     courseid = GetCourseID(cre);
-                    MessageBox.Show("Submitted Successfully");
+                    MessageBox.Show("Submitted Successfully","Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     db.enroll_student(yearlevel.SelectedItem.ToString(), acadyear.SelectedItem.ToString(), sem.SelectedItem.ToString(), status.SelectedItem.ToString(), Convert.ToInt32(id), Convert.ToInt32(courseid));
                 }
             }

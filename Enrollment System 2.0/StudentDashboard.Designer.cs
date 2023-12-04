@@ -33,11 +33,11 @@ namespace Enrollment_System_2._0
             this.panel1 = new System.Windows.Forms.Panel();
             this.studname = new System.Windows.Forms.Label();
             this.button9 = new System.Windows.Forms.Button();
+            this.studentpanel = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.studentpanel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,6 +71,7 @@ namespace Enrollment_System_2._0
             this.button9.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.Color.SteelBlue;
+            this.button9.Image = global::Enrollment_System_2._0.Properties.Resources.icons8_log_out_30;
             this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button9.Location = new System.Drawing.Point(0, 231);
             this.button9.Name = "button9";
@@ -81,11 +82,20 @@ namespace Enrollment_System_2._0
             this.button9.UseVisualStyleBackColor = false;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
+            // studentpanel
+            // 
+            this.studentpanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.studentpanel.Location = new System.Drawing.Point(274, 0);
+            this.studentpanel.Name = "studentpanel";
+            this.studentpanel.Size = new System.Drawing.Size(810, 741);
+            this.studentpanel.TabIndex = 4;
+            // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.SteelBlue;
+            this.button4.Image = global::Enrollment_System_2._0.Properties.Resources.icons8_user_not_found_30;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button4.Location = new System.Drawing.Point(0, 192);
             this.button4.Name = "button4";
@@ -101,6 +111,7 @@ namespace Enrollment_System_2._0
             this.button3.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.SteelBlue;
+            this.button3.Image = global::Enrollment_System_2._0.Properties.Resources.icons8_book_30__1_;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.Location = new System.Drawing.Point(0, 153);
             this.button3.Name = "button3";
@@ -116,6 +127,7 @@ namespace Enrollment_System_2._0
             this.button2.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.SteelBlue;
+            this.button2.Image = global::Enrollment_System_2._0.Properties.Resources.icons8_enter_30;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.Location = new System.Drawing.Point(0, 114);
             this.button2.Name = "button2";
@@ -131,6 +143,7 @@ namespace Enrollment_System_2._0
             this.button1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.SteelBlue;
+            this.button1.Image = global::Enrollment_System_2._0.Properties.Resources.icons8_home_30;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(0, 75);
             this.button1.Name = "button1";
@@ -140,14 +153,6 @@ namespace Enrollment_System_2._0
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // studentpanel
-            // 
-            this.studentpanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.studentpanel.Location = new System.Drawing.Point(274, 0);
-            this.studentpanel.Name = "studentpanel";
-            this.studentpanel.Size = new System.Drawing.Size(810, 741);
-            this.studentpanel.TabIndex = 4;
             // 
             // StudentDashboard
             // 

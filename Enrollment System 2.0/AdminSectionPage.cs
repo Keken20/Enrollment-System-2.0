@@ -15,6 +15,7 @@ namespace Enrollment_System_2._0
         int courid;
         EnrollmentDataContext db = new EnrollmentDataContext();
         int id;
+        int secid;
 
         public AdminSectionPage()
         {
@@ -48,6 +49,10 @@ namespace Enrollment_System_2._0
             if (comboBox1.SelectedValue == null || txbyear.Text == " " || txbname.Text == "" )
             {
                 MessageBox.Show("Input all information first!", "Message");
+            }
+            else if(db.check_section(comboBox1.SelectedValue.ToString(), int.Parse(txbyear.Text),txbname.Text).Count() != 0) 
+            {
+                MessageBox.Show("Section is already inserted!", "Message");
             }
             else
             {
@@ -96,7 +101,7 @@ namespace Enrollment_System_2._0
                 txbname.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
                 if (dataGridView1.Columns[e.ColumnIndex].Name == "view")
                 {
-                    int secid = int.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString());
+                    secid = int.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString());
                     AdminSchedulePage g = new AdminSchedulePage();
                     g.sectionid = secid;
                     g.ShowDialog();
@@ -106,9 +111,10 @@ namespace Enrollment_System_2._0
                 {
                     if (MessageBox.Show("Confirm?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
+                        db.delete_section_student(id);
                         db.delete_section(id);
                         db.delete_enrolled(id);
-                        db.delete_sched(id);
+                        db.delete_sched(id);                      
                         dataGridView1.DataSource = db.view_section();
                         MessageBox.Show("Section deleted sucessfully", "Message");
                         ClearData();
