@@ -1,5 +1,5 @@
 ﻿
-namespace Enrollment_System_2._0
+namespace Enrollment_System_2_0
 {
     partial class AdminSubjectPage
     {

@@ -33,11 +33,11 @@ namespace Enrollment_System_2._0
             this.panel1 = new System.Windows.Forms.Panel();
             this.studname = new System.Windows.Forms.Label();
             this.button9 = new System.Windows.Forms.Button();
-            this.studentpanel = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.studentpanel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,8 +52,9 @@ namespace Enrollment_System_2._0
             this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(274, 741);
+            this.panel1.Size = new System.Drawing.Size(365, 912);
             this.panel1.TabIndex = 3;
             // 
             // studname
@@ -61,9 +62,10 @@ namespace Enrollment_System_2._0
             this.studname.AutoSize = true;
             this.studname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.studname.ForeColor = System.Drawing.Color.White;
-            this.studname.Location = new System.Drawing.Point(59, 32);
+            this.studname.Location = new System.Drawing.Point(79, 39);
+            this.studname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.studname.Name = "studname";
-            this.studname.Size = new System.Drawing.Size(0, 20);
+            this.studname.Size = new System.Drawing.Size(0, 25);
             this.studname.TabIndex = 13;
             // 
             // button9
@@ -73,22 +75,15 @@ namespace Enrollment_System_2._0
             this.button9.ForeColor = System.Drawing.Color.SteelBlue;
             this.button9.Image = global::Enrollment_System_2._0.Properties.Resources.icons8_log_out_30;
             this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.Location = new System.Drawing.Point(0, 231);
+            this.button9.Location = new System.Drawing.Point(0, 284);
+            this.button9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(273, 41);
+            this.button9.Size = new System.Drawing.Size(364, 50);
             this.button9.TabIndex = 8;
             this.button9.Text = "         Logout";
             this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button9.UseVisualStyleBackColor = false;
             this.button9.Click += new System.EventHandler(this.button9_Click);
-            // 
-            // studentpanel
-            // 
-            this.studentpanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.studentpanel.Location = new System.Drawing.Point(274, 0);
-            this.studentpanel.Name = "studentpanel";
-            this.studentpanel.Size = new System.Drawing.Size(810, 741);
-            this.studentpanel.TabIndex = 4;
             // 
             // button4
             // 
@@ -97,9 +92,10 @@ namespace Enrollment_System_2._0
             this.button4.ForeColor = System.Drawing.Color.SteelBlue;
             this.button4.Image = global::Enrollment_System_2._0.Properties.Resources.icons8_user_not_found_30;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(0, 192);
+            this.button4.Location = new System.Drawing.Point(0, 236);
+            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(273, 41);
+            this.button4.Size = new System.Drawing.Size(364, 50);
             this.button4.TabIndex = 3;
             this.button4.Text = "         Personal Information";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -113,9 +109,10 @@ namespace Enrollment_System_2._0
             this.button3.ForeColor = System.Drawing.Color.SteelBlue;
             this.button3.Image = global::Enrollment_System_2._0.Properties.Resources.icons8_book_30__1_;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(0, 153);
+            this.button3.Location = new System.Drawing.Point(0, 188);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(273, 41);
+            this.button3.Size = new System.Drawing.Size(364, 50);
             this.button3.TabIndex = 2;
             this.button3.Text = "         View COR";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -129,9 +126,10 @@ namespace Enrollment_System_2._0
             this.button2.ForeColor = System.Drawing.Color.SteelBlue;
             this.button2.Image = global::Enrollment_System_2._0.Properties.Resources.icons8_enter_30;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(0, 114);
+            this.button2.Location = new System.Drawing.Point(0, 140);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(273, 41);
+            this.button2.Size = new System.Drawing.Size(364, 50);
             this.button2.TabIndex = 1;
             this.button2.Text = "         Enrollment";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -145,24 +143,35 @@ namespace Enrollment_System_2._0
             this.button1.ForeColor = System.Drawing.Color.SteelBlue;
             this.button1.Image = global::Enrollment_System_2._0.Properties.Resources.icons8_home_30;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(0, 75);
+            this.button1.Location = new System.Drawing.Point(0, 92);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(273, 41);
+            this.button1.Size = new System.Drawing.Size(364, 50);
             this.button1.TabIndex = 0;
             this.button1.Text = "         Home";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // studentpanel
+            // 
+            this.studentpanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.studentpanel.Location = new System.Drawing.Point(365, 0);
+            this.studentpanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.studentpanel.Name = "studentpanel";
+            this.studentpanel.Size = new System.Drawing.Size(1080, 912);
+            this.studentpanel.TabIndex = 4;
+            // 
             // StudentDashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1084, 741);
+            this.ClientSize = new System.Drawing.Size(1445, 912);
             this.Controls.Add(this.studentpanel);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimizeBox = false;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximizeBox = false;
             this.Name = "StudentDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StudentDashboard";

@@ -68,9 +68,10 @@ namespace Enrollment_System_2._0
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label17.Location = new System.Drawing.Point(235, 330);
+            this.label17.Location = new System.Drawing.Point(313, 406);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(56, 17);
+            this.label17.Size = new System.Drawing.Size(64, 20);
             this.label17.TabIndex = 26;
             this.label17.Text = "Gender";
             // 
@@ -80,9 +81,10 @@ namespace Enrollment_System_2._0
             this.gender.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.gender.Location = new System.Drawing.Point(235, 350);
+            this.gender.Location = new System.Drawing.Point(313, 431);
+            this.gender.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gender.Name = "gender";
-            this.gender.Size = new System.Drawing.Size(175, 21);
+            this.gender.Size = new System.Drawing.Size(232, 24);
             this.gender.TabIndex = 25;
             // 
             // button1
@@ -93,9 +95,10 @@ namespace Enrollment_System_2._0
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(201, 551);
+            this.button1.Location = new System.Drawing.Point(268, 678);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(147, 43);
+            this.button1.Size = new System.Drawing.Size(196, 53);
             this.button1.TabIndex = 24;
             this.button1.Text = "LOGIN";
             this.button1.UseVisualStyleBackColor = false;
@@ -106,9 +109,10 @@ namespace Enrollment_System_2._0
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label12.Location = new System.Drawing.Point(45, 275);
+            this.label12.Location = new System.Drawing.Point(60, 338);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(80, 17);
+            this.label12.Size = new System.Drawing.Size(96, 20);
             this.label12.TabIndex = 12;
             this.label12.Text = "Last Name:";
             // 
@@ -117,9 +121,10 @@ namespace Enrollment_System_2._0
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label11.Location = new System.Drawing.Point(231, 223);
+            this.label11.Location = new System.Drawing.Point(308, 274);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(94, 17);
+            this.label11.Size = new System.Drawing.Size(112, 20);
             this.label11.TabIndex = 11;
             this.label11.Text = "Middle Name:";
             // 
@@ -128,9 +133,10 @@ namespace Enrollment_System_2._0
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label10.Location = new System.Drawing.Point(45, 223);
+            this.label10.Location = new System.Drawing.Point(60, 274);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(80, 17);
+            this.label10.Size = new System.Drawing.Size(97, 20);
             this.label10.TabIndex = 10;
             this.label10.Text = "First Name:";
             // 
@@ -142,9 +148,10 @@ namespace Enrollment_System_2._0
             this.create.FlatAppearance.BorderSize = 0;
             this.create.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.create.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.create.Location = new System.Drawing.Point(48, 551);
+            this.create.Location = new System.Drawing.Point(64, 678);
+            this.create.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.create.Name = "create";
-            this.create.Size = new System.Drawing.Size(147, 43);
+            this.create.Size = new System.Drawing.Size(196, 53);
             this.create.TabIndex = 9;
             this.create.Text = "CREATE";
             this.create.UseVisualStyleBackColor = false;
@@ -155,9 +162,10 @@ namespace Enrollment_System_2._0
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label4.Location = new System.Drawing.Point(38, 29);
+            this.label4.Location = new System.Drawing.Point(51, 36);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(132, 22);
+            this.label4.Size = new System.Drawing.Size(159, 26);
             this.label4.TabIndex = 8;
             this.label4.Text = "Create account";
             // 
@@ -165,9 +173,10 @@ namespace Enrollment_System_2._0
             // 
             this.cpass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cpass.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cpass.Location = new System.Drawing.Point(48, 178);
+            this.cpass.Location = new System.Drawing.Point(64, 219);
+            this.cpass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cpass.Name = "cpass";
-            this.cpass.Size = new System.Drawing.Size(362, 23);
+            this.cpass.Size = new System.Drawing.Size(482, 26);
             this.cpass.TabIndex = 7;
             // 
             // label3
@@ -175,9 +184,10 @@ namespace Enrollment_System_2._0
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label3.Location = new System.Drawing.Point(45, 158);
+            this.label3.Location = new System.Drawing.Point(60, 194);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(125, 17);
+            this.label3.Size = new System.Drawing.Size(152, 20);
             this.label3.TabIndex = 6;
             this.label3.Text = "Confirm Password:";
             // 
@@ -185,9 +195,10 @@ namespace Enrollment_System_2._0
             // 
             this.pass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pass.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pass.Location = new System.Drawing.Point(48, 132);
+            this.pass.Location = new System.Drawing.Point(64, 162);
+            this.pass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pass.Name = "pass";
-            this.pass.Size = new System.Drawing.Size(362, 23);
+            this.pass.Size = new System.Drawing.Size(482, 26);
             this.pass.TabIndex = 5;
             // 
             // label2
@@ -195,9 +206,10 @@ namespace Enrollment_System_2._0
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label2.Location = new System.Drawing.Point(45, 112);
+            this.label2.Location = new System.Drawing.Point(60, 138);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 17);
+            this.label2.Size = new System.Drawing.Size(88, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "Password:";
             // 
@@ -205,9 +217,10 @@ namespace Enrollment_System_2._0
             // 
             this.username.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.username.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.username.Location = new System.Drawing.Point(48, 86);
+            this.username.Location = new System.Drawing.Point(64, 106);
+            this.username.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.username.Name = "username";
-            this.username.Size = new System.Drawing.Size(362, 23);
+            this.username.Size = new System.Drawing.Size(482, 26);
             this.username.TabIndex = 3;
             // 
             // label1
@@ -215,9 +228,10 @@ namespace Enrollment_System_2._0
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label1.Location = new System.Drawing.Point(45, 66);
+            this.label1.Location = new System.Drawing.Point(60, 81);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 17);
+            this.label1.Size = new System.Drawing.Size(91, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Username:";
             // 
@@ -226,9 +240,10 @@ namespace Enrollment_System_2._0
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label15.Location = new System.Drawing.Point(47, 443);
+            this.label15.Location = new System.Drawing.Point(63, 545);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(42, 17);
+            this.label15.Size = new System.Drawing.Size(51, 20);
             this.label15.TabIndex = 21;
             this.label15.Text = "Email";
             // 
@@ -236,18 +251,20 @@ namespace Enrollment_System_2._0
             // 
             this.email.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.email.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.email.Location = new System.Drawing.Point(50, 463);
+            this.email.Location = new System.Drawing.Point(67, 570);
+            this.email.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.email.Name = "email";
-            this.email.Size = new System.Drawing.Size(362, 23);
+            this.email.Size = new System.Drawing.Size(482, 26);
             this.email.TabIndex = 20;
             // 
             // addrss
             // 
             this.addrss.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.addrss.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addrss.Location = new System.Drawing.Point(48, 405);
+            this.addrss.Location = new System.Drawing.Point(64, 498);
+            this.addrss.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addrss.Name = "addrss";
-            this.addrss.Size = new System.Drawing.Size(362, 23);
+            this.addrss.Size = new System.Drawing.Size(482, 26);
             this.addrss.TabIndex = 19;
             // 
             // label14
@@ -255,9 +272,10 @@ namespace Enrollment_System_2._0
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label14.Location = new System.Drawing.Point(47, 385);
+            this.label14.Location = new System.Drawing.Point(63, 474);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(60, 17);
+            this.label14.Size = new System.Drawing.Size(71, 20);
             this.label14.TabIndex = 18;
             this.label14.Text = "Address";
             // 
@@ -266,44 +284,49 @@ namespace Enrollment_System_2._0
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label13.Location = new System.Drawing.Point(231, 275);
+            this.label13.Location = new System.Drawing.Point(308, 338);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(69, 17);
+            this.label13.Size = new System.Drawing.Size(82, 20);
             this.label13.TabIndex = 17;
             this.label13.Text = "Birthdate:";
             // 
             // bd
             // 
-            this.bd.Location = new System.Drawing.Point(233, 298);
+            this.bd.Location = new System.Drawing.Point(311, 367);
+            this.bd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bd.Name = "bd";
-            this.bd.Size = new System.Drawing.Size(179, 20);
+            this.bd.Size = new System.Drawing.Size(237, 22);
             this.bd.TabIndex = 16;
             // 
             // mname
             // 
             this.mname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.mname.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mname.Location = new System.Drawing.Point(233, 243);
+            this.mname.Location = new System.Drawing.Point(311, 299);
+            this.mname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.mname.Name = "mname";
-            this.mname.Size = new System.Drawing.Size(179, 23);
+            this.mname.Size = new System.Drawing.Size(238, 26);
             this.mname.TabIndex = 15;
             // 
             // lname
             // 
             this.lname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lname.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lname.Location = new System.Drawing.Point(48, 295);
+            this.lname.Location = new System.Drawing.Point(64, 363);
+            this.lname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lname.Name = "lname";
-            this.lname.Size = new System.Drawing.Size(179, 23);
+            this.lname.Size = new System.Drawing.Size(238, 26);
             this.lname.TabIndex = 14;
             // 
             // fname
             // 
             this.fname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.fname.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fname.Location = new System.Drawing.Point(48, 243);
+            this.fname.Location = new System.Drawing.Point(64, 299);
+            this.fname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.fname.Name = "fname";
-            this.fname.Size = new System.Drawing.Size(179, 23);
+            this.fname.Size = new System.Drawing.Size(238, 26);
             this.fname.TabIndex = 13;
             // 
             // panel1
@@ -334,9 +357,10 @@ namespace Enrollment_System_2._0
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.username);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(339, 0);
+            this.panel1.Location = new System.Drawing.Point(452, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(669, 749);
+            this.panel1.Size = new System.Drawing.Size(892, 922);
             this.panel1.TabIndex = 11;
             // 
             // label16
@@ -344,9 +368,10 @@ namespace Enrollment_System_2._0
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label16.Location = new System.Drawing.Point(45, 330);
+            this.label16.Location = new System.Drawing.Point(60, 406);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(130, 17);
+            this.label16.Size = new System.Drawing.Size(150, 20);
             this.label16.TabIndex = 23;
             this.label16.Text = "Telephone Number";
             // 
@@ -354,9 +379,10 @@ namespace Enrollment_System_2._0
             // 
             this.tel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tel.Location = new System.Drawing.Point(50, 350);
+            this.tel.Location = new System.Drawing.Point(67, 431);
+            this.tel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tel.Name = "tel";
-            this.tel.Size = new System.Drawing.Size(179, 23);
+            this.tel.Size = new System.Drawing.Size(238, 26);
             this.tel.TabIndex = 22;
             // 
             // label5
@@ -364,10 +390,10 @@ namespace Enrollment_System_2._0
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.AliceBlue;
-            this.label5.Location = new System.Drawing.Point(1, 233);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 3, 0);
+            this.label5.Location = new System.Drawing.Point(1, 287);
+            this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(343, 138);
+            this.label5.Size = new System.Drawing.Size(431, 174);
             this.label5.TabIndex = 7;
             this.label5.Text = "Welcome to the\r\nCCICT Enrollment\r\nSystem";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -379,8 +405,9 @@ namespace Enrollment_System_2._0
             this.panel2.Controls.Add(this.label5);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(354, 749);
+            this.panel2.Size = new System.Drawing.Size(472, 922);
             this.panel2.TabIndex = 12;
             // 
             // label18
@@ -389,22 +416,25 @@ namespace Enrollment_System_2._0
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.AliceBlue;
             this.label18.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label18.Location = new System.Drawing.Point(202, 622);
+            this.label18.Location = new System.Drawing.Point(269, 766);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(142, 75);
+            this.label18.Size = new System.Drawing.Size(180, 87);
             this.label18.TabIndex = 13;
             this.label18.Text = "Developed By\r\nSeth Bucol\r\nAiken Canama";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // RegistrationForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.ClientSize = new System.Drawing.Size(1008, 749);
+            this.ClientSize = new System.Drawing.Size(1344, 922);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximizeBox = false;
             this.Name = "RegistrationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registration Page";

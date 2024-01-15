@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Enrollment_System_2._0;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Enrollment_System_2._0
+namespace Enrollment_Systems_2_0
 {
     public partial class LoginForm : Form
     {
@@ -94,6 +95,11 @@ namespace Enrollment_System_2._0
             RegistrationForm rf = new RegistrationForm();
             rf.Show();
             Visible = false;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

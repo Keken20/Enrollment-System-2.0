@@ -63,5 +63,16 @@ namespace Enrollment_System_2._0.Properties {
                 return ((string)(this["enrollmentConnectionString3"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-RAPGCP1J\\SQLEXPRESS;Initial Catalog=enrollment;Integrated Secu" +
+            "rity=True")]
+        public string enrollmentConnectionString4 {
+            get {
+                return ((string)(this["enrollmentConnectionString4"]));
+            }
+        }
     }
 }
